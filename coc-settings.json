@@ -1,0 +1,27 @@
+{
+
+"diagnostic.errorSign": "",
+"diagnostic.warningSign": "⚠",
+"diagnostic.infoSign": "",
+"diagnostic.hintSign": "",
+"diagnostic.virtualText": true,
+
+"coc.preferences.formatOnSaveFiletypes": [
+  "typescript",
+  "css",
+  "javascript",
+  "html", 
+  "java"
+],
+
+"list.indicator": ">",
+"list.selectedSignText": "",
+
+"codeLens.enable": true,
+"java.referencesCodeLens.enabled": true,
+"java.implementationsCodeLens.enabled": true,
+"java.completion.enabled": true,
+"java.jdt.ls.vmargs": "-javaagent:Users/JoseHM/AppData/Local/lombok/lombok.jar"
+
+}
+
