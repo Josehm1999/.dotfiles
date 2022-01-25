@@ -11,7 +11,8 @@
   "css",
   "javascript",
   "html", 
-  "java"
+  "java",
+  "flutter"
 ],
 
 "list.indicator": ">",

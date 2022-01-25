@@ -12,6 +12,10 @@ Plug 'preservim/nerdtree'		"gestor de archivos en forma de arbol.
 Plug 'christoomey/vim-tmux-navigator'	"poder navegar entre archivos abiertos
 Plug 'jiangmiao/auto-pairs'	"autocompletado de llaves, corchetes, etc.
 Plug 'ryanoasis/vim-devicons'
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } 
+Plug 'junegunn/fzf.vim' 
+Plug 'stsewd/fzf-checkout.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}	"autocompletado inteligente
 Plug 'neoclide/coc-eslint'
 call plug#end() 			"cerramos el llamado de los plugins
@@ -65,6 +69,11 @@ let mapleader = " "
 "mapeando el abrir y cerrar de nerdtree con nerdtreetoggle vemos los archivos en el arbol y podemos cerrarlo a la vez, map es la C mayuscula representa el
 "control y -n la tecla n lo que indica que realizará la siguiente funcion de excribir el comando NERDTreeToggle y CR significa ENTER.
 map <C-n> :NERDTreeToggle<CR>
+
+
+"FZF CONFIGURACIONES
+let g:fzf_layout = { 'window': { 'width':0.8, 'height': 0.8 } }
+let $FZF_DEFAULT_OPTS= '--reverse'
 
 "configuracion por defecto de coc
 " TextEdit might fail if hidden is not set.
@@ -232,15 +241,14 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+"Vim Fugitive remaps
+nmap <leader>gj :diffget //3<CR>
+nmap <leader>gf :diffget //2<CR>
+nmap <leader>gs :G<CR>
 
-nnoremap <leader>h :wincmd h<CR>
-
-nnoremap <leader>j :wincmd j<CR>
-
-nnoremap <leader>k :wincmd k<CR>
-
-nnoremap <leader>l :wincmd l<CR>
-
+"Fzf-checkout remaps
+nnoremap <leader>gc: GCheckout<CR>
+"Movement remaps
 nnoremap <leader>n :wincmd n<CR> 
 
 nnoremap <leader>q :wincmd q<CR>
