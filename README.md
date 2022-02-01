@@ -1,4 +1,4 @@
 # .dotfiles
-[X] Nvim config
-[ ] Tmux config
-[ ] Zsh config
+\n[X] Nvim config
+\n[ ] Tmux config
+\n[ ] Zsh config
