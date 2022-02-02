@@ -1,4 +1,5 @@
 # .dotfiles
 # [X] Nvim config
 # [ ] Tmux config
-# [ ] Zsh config
+# [X] Zsh config
+# [X] Powerlevel10k
