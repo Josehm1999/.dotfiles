@@ -32,6 +32,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 
@@ -49,7 +50,7 @@ call plug#end()
 "Theme config
 colorscheme gruvbox
 hi Normal guibg=NONE ctermbg=NONE
-
+let g:gruvbox_italicize_strings = 1
 " Buffer navigation
 " TODO
 let g:airline#extensions#tabline#enabled = 1
@@ -91,7 +92,7 @@ endfun
 
 augroup JoseHM
     autocmd!
-    " autocmd BufWritePre <buffer> <cmd>EslintFixAll<CR>
+    autocmd BufWritePre *.ts EslintFixAll
     autocmd BufWritePre *.js Neoformat
     autocmd BufWritePre * :call TrimWhiteSpace()
 augroup END

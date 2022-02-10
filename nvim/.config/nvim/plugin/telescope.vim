@@ -4,7 +4,7 @@ nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim
 nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
 " nnoremap <C-_> <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.theme').get) <CR>
 nnoremap <C-_> :lua require('josehm.telescope').curr_buff() <CR>
-nnoremap <leader>pf :lua require('telescope.builtin').find_files()<CR>
+nnoremap <leader>pf :lua require('telescope.builtin').find_files({hidden =true})<CR>
 
 nnoremap <leader>pw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>")}<CR>
 nnoremap <leader>pb :lua require('telescope.builtin').buffers()<CR>
