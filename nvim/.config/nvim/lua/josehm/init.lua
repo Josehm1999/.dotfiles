@@ -1,4 +1,13 @@
+require("josehm.options")
+require("josehm.keymaps")
 require("josehm.telescope")
+require("josehm.nvim-tree")
+require("josehm.treesitter")
+require("josehm.comment")
+require("josehm.gitsigns")
+require("josehm.bufferline")
+require("josehm.cmp")
+require("josehm.lualine")
 require("josehm.lsp")
 
 p = function(v)
