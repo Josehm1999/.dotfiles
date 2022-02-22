@@ -5,3 +5,4 @@ end
 
 require("josehm.lsp.lsp-installer")
 require("josehm.lsp.handlers").setup()
+require "josehm.lsp.null-ls"

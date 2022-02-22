@@ -5,8 +5,11 @@ call plug#begin('~/.vim/plugged')
 "Devicons
 Plug 'kyazdani42/nvim-web-devicons'
 
+"Toggleterm
+Plug 'akinsho/toggleterm.nvim'
 "Autopairs
-Plug 'jiangmiao/auto-pairs'
+Plug 'windwp/nvim-autopairs'
+" Plug 'jiangmiao/auto-pairs'
 
 " Nvim-tree
 Plug 'kyazdani42/nvim-tree.lua'
@@ -23,7 +26,6 @@ Plug 'akinsho/bufferline.nvim'
 Plug 'moll/vim-bbye'
 Plug 'nvim-lualine/lualine.nvim'
 
-
 "Telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -33,10 +35,10 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim', { 'do': 'make' }
 "Telescope media files
 Plug 'nvim-telescope/telescope-media-files.nvim'
 
-
 "Lsp
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
+Plug 'jose-elias-alvarez/null-ls.nvim'
 
 " Cmp plugins
 Plug 'hrsh7th/nvim-cmp'
@@ -46,6 +48,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'hrsh7th/cmp-nvim-lua'
+
 "Snippets
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
@@ -56,7 +59,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'lewis6991/gitsigns.nvim'
 
 "Prettier
-Plug 'sbdchd/neoformat'
+"Plug 'sbdchd/neoformat'
 
 "Theme gruvbox
 Plug 'gruvbox-community/gruvbox'
@@ -80,9 +83,8 @@ fun! TrimWhiteSpace()
     call winrestview(l:save)
 endfun
 
-augroup JoseHM
+  augroup JoseHM
     autocmd!
-    autocmd BufWritePre *.ts EslintFixAll
-    autocmd BufWritePre *.js Neoformat
+    autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
     autocmd BufWritePre * :call TrimWhiteSpace()
 augroup END
