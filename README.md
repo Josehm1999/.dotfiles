@@ -1,5 +1,2 @@
 # .dotfiles
-# [X] Nvim config
-# [ ] Tmux config
-# [X] Zsh config
-# [X] Powerlevel10k
+Config files for TMUX, ZSH, POWERLEVEL10K and NVIM (with lua)
