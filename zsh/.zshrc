@@ -21,7 +21,8 @@ bindkey -e
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
-
+# I hate beeps
+unsetopt BEEP
 # Use modern completion system
 autoload -Uz compinit
 compinit -i
@@ -50,7 +51,7 @@ source /home/josehm/powerlevel10k/powerlevel10k.zsh-theme
 
 # Manual configuration
 
-PATH=PATH=/root/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+PATH=/root/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 
 # Manual aliases
 alias ll='lsd -lh --group-dirs=first'
