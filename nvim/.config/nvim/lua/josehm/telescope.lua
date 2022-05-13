@@ -1,5 +1,12 @@
+local status_ok, telescope = pcall(require, "telescope")
+if not status_ok then
+  return
+end
+
+
 local actions = require('telescope.actions')
-require('telescope').setup({
+
+telescope.setup {
     defaults = {
         file_sorter = require('telescope.sorters').get_fzy_sorter,
         prompt_prefix = " >",
@@ -87,7 +94,7 @@ require('telescope').setup({
       -- find_cmd = "rg" -- find command (defaults to `fd`)
     --}
     },
-})
+}
 
 require('telescope').load_extension('fzy_native')
 -- require('telescope').load_extension('media_files')

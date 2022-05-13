@@ -102,10 +102,11 @@ cmp.setup {
         -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
         vim_item.menu = ({
         nvim_lsp = "[LSP]",
-        nvim_lua = "[NVIM_LUA]",
+        nvim_lua = "[NVIM]",
         luasnip = "[Snippet]",
         buffer = "[Buffer]",
         path = "[Path]",
+        emoji = "[Emoji]"
         })[entry.source.name]
         return vim_item
     end,
@@ -115,17 +116,35 @@ cmp.setup {
     { name = "nvim_lua" },
     { name = "luasnip" },
     { name = "buffer" },
+    { name = "cmp_tabnine" },
     { name = "path" },
+    { name = "emoji" },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
   },
-  documentation = {
-    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  window = {
+    documentation = {
+      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    },
   },
   experimental = {
     ghost_text = false,
-    native_menu = false,
+    --native_menu = false,
   },
 }
+
+
+--tabnine:setup({
+-- max_lines = 1000;
+-- max_num_results = 20;
+-- sort = true;
+-- run_on_every_keystroke = true;
+-- snippet_placeholder = '..';
+-- ignored_file_types = { -- default is not to ignore
+		-- uncomment to ignore in lua:
+		-- lua = true
+    -- };
+    -- show_prediction_strength = false;
+    -- })
