@@ -12,16 +12,17 @@ require("josehm.lsp")
 require("josehm.autopairs")
 require("josehm.toggleterm")
 require("josehm.nvim-web-devicons")
+require("josehm.vim-dadbod-ui")
 P = function(v)
-    print(vim.inspect(v))
-    return v
+	print(vim.inspect(v))
+	return v
 end
 
 RELOAD = function(...)
-    return require("plenary.reload").reload_module(...)
+	return require("plenary.reload").reload_module(...)
 end
 
 R = function(name)
-    RELOAD(name)
-    return require(name)
+	RELOAD(name)
+	return require(name)
 end
