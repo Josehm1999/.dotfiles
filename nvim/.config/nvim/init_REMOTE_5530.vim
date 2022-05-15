@@ -7,7 +7,6 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 "Toggleterm
 Plug 'akinsho/toggleterm.nvim'
-
 "Autopairs
 Plug 'windwp/nvim-autopairs'
 " Plug 'jiangmiao/auto-pairs'
@@ -23,7 +22,7 @@ Plug 'numToStr/Comment.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "Plug 'nvim-treesitter/nvim-treesitter-angular' "Treesitter integration with Angular
 Plug 'p00f/nvim-ts-rainbow'
-"Plug 'nvim-treesitter/playground'
+Plug 'nvim-treesitter/playground'
 Plug 'akinsho/bufferline.nvim'
 Plug 'moll/vim-bbye'
 Plug 'nvim-lualine/lualine.nvim'
@@ -33,7 +32,6 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim', { 'do': 'make' }
-Plug 'nvim-telescope/telescope-file-browser.nvim'
 
 "Telescope media files
 " Plug 'nvim-telescope/telescope-media-files.nvim'
@@ -62,17 +60,11 @@ Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
 
+
 "Git
 Plug 'tpope/vim-fugitive'
 Plug 'lewis6991/gitsigns.nvim'
 
-"Dabbod-ui - Client for DB connections
-Plug 'tpope/vim-dadbod'
-Plug 'tpope/vim-dotenv'
-Plug 'kristijanhusak/vim-dadbod-ui'
-
-"vim-inspector -Debugging
-Plug 'puremourning/vimspector'
 "Solidity syntax
 Plug 'tomlion/vim-solidity'
 "Prettier
@@ -86,14 +78,13 @@ call plug#end()
 colorscheme gruvbox
 hi Normal guibg=NONE ctermbg=NONE
 let g:gruvbox_italicize_strings = 1
+
 "Lsp Config -- its here because i don't know how to do it in lua
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
-let g:vimspector_enable_mappings = "HUMAN"
-
-" lua require("josehm")
+lua require("josehm")
 " Sources lua files a init.vim
-nnoremap <leader>r :lua package.loaded.josehm = nil<cr>:source ~/.config/nvim/init.vim <cr>
+nnoremap <F4> :lua package.loaded.josehm = nil<cr>:source ~/.config/nvim/init.vim <cr>
 
 fun! TrimWhiteSpace()
     let l:save = winsaveview()
@@ -103,7 +94,6 @@ endfun
 
   augroup JoseHM
     autocmd!
-    autocmd BufNewFile,BufRead *.cshtml set syntax=html
     autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
     autocmd BufWritePre * :call TrimWhiteSpace()
 augroup END

@@ -1,95 +1,92 @@
-local actions = require("telescope.actions")
-require("telescope").setup({
-	defaults = {
-		file_sorter = require("telescope.sorters").get_fzy_sorter,
-		prompt_prefix = " >",
-		color_devicons = true,
-		scroll_strategy = "cycle",
-		file_ignore_patterns = { "node_modules", ".git" },
-		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-		find_files = {
-			hidden = true,
-		},
-		mappings = {
-			i = {
-				["<C-n>"] = actions.cycle_history_next,
-				["<C-p>"] = actions.cycle_history_prev,
+local status_ok, telescope = pcall(require, "telescope")
+if not status_ok then
+  return
+end
 
-				["<C-j>"] = actions.move_selection_next,
-				["<C-k>"] = actions.move_selection_previous,
 
-				["<C-c>"] = actions.close,
+local actions = require('telescope.actions')
 
-				["<Down>"] = actions.move_selection_next,
-				["<Up>"] = actions.move_selection_previous,
+telescope.setup {
+    defaults = {
+        file_sorter = require('telescope.sorters').get_fzy_sorter,
+        prompt_prefix = " >",
+        color_devicons = true,
+        file_ignore_patterns = {'node_modules', '.git'},
+        file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
+        grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
+        qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+        find_files = {
+            hidden = true
+        },
+        mappings = {
+            i = {
+        ["<C-n>"] = actions.cycle_history_next,
+        ["<C-p>"] = actions.cycle_history_prev,
+	["<C-j>"] = actions.move_selection_next,
+	["<C-k>"] = actions.move_selection_previous,
+	["<C-c>"] = actions.close,
+	["<Down>"] = actions.move_selection_next,
+	["<Up>"] = actions.move_selection_previous,
+	["<CR>"] = actions.select_default,
+	["<C-x>"] = actions.select_horizontal,
+	["<C-v>"] = actions.select_vertical,
+	["<C-t>"] = actions.select_tab,
+	["<C-u>"] = actions.preview_scrolling_up,
+	["<C-d>"] = actions.preview_scrolling_down,
+	["<PageUp>"] = actions.results_scrolling_up,
+	["<PageDown>"] = actions.results_scrolling_down,
+	["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+	["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+	["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+	["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+	["<C-l>"] = actions.complete_tag,
+	["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
+},
+n = {
+	["<esc>"] = actions.close,
+	["<CR>"] = actions.select_default,
+	["<C-x>"] = actions.select_horizontal,
+		["<C-v>"] = actions.select_vertical,
+		["<C-t>"] = actions.select_tab,
 
-				["<CR>"] = actions.select_default,
-				["<C-x>"] = actions.select_horizontal,
-				["<C-v>"] = actions.select_vertical,
-				["<C-t>"] = actions.select_tab,
+		["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+		["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+		["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+		["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 
-				["<C-u>"] = actions.preview_scrolling_up,
-				["<C-d>"] = actions.preview_scrolling_down,
+		["j"] = actions.move_selection_next,
+		["k"] = actions.move_selection_previous,
+		["h"] = actions.move_to_top,
+		["m"] = actions.move_to_middle,
+		["l"] = actions.move_to_bottom,
 
-				["<PageUp>"] = actions.results_scrolling_up,
-				["<PageDown>"] = actions.results_scrolling_down,
+		["<Down>"] = actions.move_selection_next,
+		["<Up>"] = actions.move_selection_previous,
+		["gg"] = actions.move_to_top,
+		["G"] = actions.move_to_bottom,
 
-				["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-				["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-				["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-				["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-				["<C-l>"] = actions.complete_tag,
-				["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
-			},
-			n = {
-				["<esc>"] = actions.close,
-				["<CR>"] = actions.select_default,
-				["<C-x>"] = actions.select_horizontal,
-				["<C-v>"] = actions.select_vertical,
-				["<C-t>"] = actions.select_tab,
+		["<C-u>"] = actions.preview_scrolling_up,
+		["<C-d>"] = actions.preview_scrolling_down,
 
-				["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-				["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-				["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-				["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-
-				["j"] = actions.move_selection_next,
-				["k"] = actions.move_selection_previous,
-				["h"] = actions.move_to_top,
-				["m"] = actions.move_to_middle,
-				["l"] = actions.move_to_bottom,
-
-				["<Down>"] = actions.move_selection_next,
-				["<Up>"] = actions.move_selection_previous,
-				["gg"] = actions.move_to_top,
-				["G"] = actions.move_to_bottom,
-
-				["<C-u>"] = actions.preview_scrolling_up,
-				["<C-d>"] = actions.preview_scrolling_down,
-
-				["<PageUp>"] = actions.results_scrolling_up,
-				["<PageDown>"] = actions.results_scrolling_down,
-
-				["?"] = actions.which_key,
-			},
-		},
-	},
-	pickers = {},
-	extensions = {
-		fzy_native = {
-			override_generic_sorter = false,
-			override_file_sorter = true,
-		},
-		--   media_files = {
-		-- -- filetypes whitelist
-		-- -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-		-- filetypes = {"png", "webp", "jpg", "jpeg"},
-		-- find_cmd = "rg" -- find command (defaults to `fd`)
-		--}
-	},
-})
+		["<PageUp>"] = actions.results_scrolling_up,
+		["<PageDown>"] = actions.results_scrolling_down,
+        ["?"] = actions.which_key,
+    },
+    }},
+    pickers = {},
+    extensions = {
+        fzy_native = {
+              override_generic_sorter = false,
+              override_file_sorter = true,
+            },
+      --   media_files = {
+      -- -- filetypes whitelist
+      -- -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+      -- filetypes = {"png", "webp", "jpg", "jpeg"},
+      -- find_cmd = "rg" -- find command (defaults to `fd`)
+    --}
+    },
+}
 
 require("telescope").load_extension("fzy_native")
 require("telescope").load_extension("file_browser")

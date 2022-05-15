@@ -66,6 +66,7 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'tpope/vim-fugitive'
 Plug 'lewis6991/gitsigns.nvim'
 
+<<<<<<< HEAD
 "Dabbod-ui - Client for DB connections
 Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-dotenv'
@@ -73,8 +74,10 @@ Plug 'kristijanhusak/vim-dadbod-ui'
 
 "vim-inspector -Debugging
 Plug 'puremourning/vimspector'
+=======
 "Solidity syntax
 Plug 'tomlion/vim-solidity'
+>>>>>>> 89e1308d3a9d96d465d4392614f0f1131d035210
 "Prettier
 "Plug 'sbdchd/neoformat'
 

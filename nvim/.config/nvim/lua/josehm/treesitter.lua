@@ -3,8 +3,15 @@ if not status_ok then
 	return
 end
 
+--local ft_to_parser = require"nvim-treesitter.parsers".filetype_to_parsername
+--ft_to_parser.motoko = "typescript"
+
 configs.setup({
+<<<<<<< HEAD
 	ensure_installed = { "all" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+=======
+	ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+>>>>>>> 89e1308d3a9d96d465d4392614f0f1131d035210
 	sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
 	ignore_install = { "" }, -- List of parsers to ignore installing
 	highlight = {
@@ -17,7 +24,7 @@ configs.setup({
 	autopairs = {
 		enable = true,
 	},
-	indent = { enable = true, disable = { "yaml", "python", "css" } },
+	indent = { enable = true, disable = { "python", "css" } },
 	context_commentstring = {
 		enable = true,
 		enable_autocmd = false,

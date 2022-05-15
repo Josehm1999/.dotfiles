@@ -21,7 +21,7 @@ Plug 'numToStr/Comment.nvim'
 
 "Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-"Plug 'nvim-treesitter/nvim-treesitter-angular' "Treesitter integration with Angular
+Plug 'nvim-treesitter/nvim-treesitter-angular' "Treesitter integration with Angular
 Plug 'p00f/nvim-ts-rainbow'
 "Plug 'nvim-treesitter/playground'
 Plug 'akinsho/bufferline.nvim'
@@ -36,16 +36,13 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 
 "Telescope media files
-" Plug 'nvim-telescope/telescope-media-files.nvim'
+Plug 'nvim-telescope/telescope-media-files.nvim'
 
 "Lsp
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'antoinemadec/FixCursorHold.nvim' "This is needed to fix lsp doc highlight
 Plug 'jose-elias-alvarez/null-ls.nvim'
-
-" For highlighting current line
-Plug 'RRethy/vim-illuminate'
 
 " Cmp plugins
 Plug 'hrsh7th/nvim-cmp'
@@ -56,8 +53,6 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'hrsh7th/cmp-nvim-lua'
 
-" CMP-tabnine
-Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 "Snippets
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
@@ -73,8 +68,6 @@ Plug 'kristijanhusak/vim-dadbod-ui'
 
 "vim-inspector -Debugging
 Plug 'puremourning/vimspector'
-"Solidity syntax
-Plug 'tomlion/vim-solidity'
 "Prettier
 "Plug 'sbdchd/neoformat'
 
