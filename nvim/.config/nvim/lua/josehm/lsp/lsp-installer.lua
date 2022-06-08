@@ -45,20 +45,6 @@ local settings = {
   -- install_root_dir = path.concat { vim.fn.stdpath "data", "lsp_servers" },
 }
 
-<<<<<<< HEAD
-      if server.name == "sumneko_lua" then
-        local sumneko_opts = require("josehm.lsp.settings.sumneko_lua")
-        opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
-      end
-      if server.name == "csharp_ls" then
-        local csharp_opts = require("josehm.lsp.settings.csharp-ls")
-        opts = vim.tbl_deep_extend("force", csharp_opts, opts)
-      end
-      -- This setup() function is exactly the same as lspconfig's setup function
-      -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-      server:setup(opts)
- end)
-=======
 lsp_installer.setup(settings)
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
@@ -73,6 +59,24 @@ for _, server in pairs(servers) do
     on_attach = require("josehm.lsp.handlers").on_attach,
     capabilities = require("josehm.lsp.handlers").capabilities,
   }
+      if server == "sumneko_lua" then
+        local sumneko_opts = require("josehm.lsp.settings.sumneko_lua")
+        opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
+      end
+      if server == "csharp_ls" then
+        local csharp_opts = require("josehm.lsp.settings.csharp-ls")
+        opts = vim.tbl_deep_extend("force", csharp_opts, opts)
+      end
+
+      if server == "emmet_ls" then
+        local emmet_ls_opts = require("josehm.lsp.settings.emmet_ls")
+        opts = vim.tbl_deep_extend("force", emmet_ls_opts, opts)
+      end
+
+      if server == "solang" then
+        local solang_opts = require("josehm.lsp.settings.solang")
+        opts = vim.tbl_deep_extend("force", solang_opts, opts)
+      end
+
    lspconfig[server].setup(opts)
 end
->>>>>>> 89e1308d3a9d96d465d4392614f0f1131d035210

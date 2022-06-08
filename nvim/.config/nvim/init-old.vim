@@ -17,13 +17,13 @@ Plug 'kyazdani42/nvim-tree.lua'
 
 "Commenting
 Plug 'numToStr/Comment.nvim'
-"Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 
 "Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "Plug 'nvim-treesitter/nvim-treesitter-angular' "Treesitter integration with Angular
 Plug 'p00f/nvim-ts-rainbow'
-"Plug 'nvim-treesitter/playground'
+Plug 'nvim-treesitter/playground'
 Plug 'akinsho/bufferline.nvim'
 Plug 'moll/vim-bbye'
 Plug 'nvim-lualine/lualine.nvim'
@@ -91,7 +91,7 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 let g:vimspector_enable_mappings = "HUMAN"
 
-" lua require("josehm")
+lua require("josehm")
 " Sources lua files a init.vim
 nnoremap <leader>r :lua package.loaded.josehm = nil<cr>:source ~/.config/nvim/init.vim <cr>
 
@@ -101,7 +101,7 @@ fun! TrimWhiteSpace()
     call winrestview(l:save)
 endfun
 
-  augroup JoseHM
+augroup JoseHM
     autocmd!
     autocmd BufNewFile,BufRead *.cshtml set syntax=html
     autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()

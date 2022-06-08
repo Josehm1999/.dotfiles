@@ -81,4 +81,3 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 -- Telescope
 keymap("n", "<leader>fb", ":Telescope file_browser<cr>", opts)
 
--- Fugitive
