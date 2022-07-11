@@ -5,15 +5,15 @@ end
 
 local servers = {
   "cssls",
-  "cssmodules_ls",
-  "emmet_ls",
+ -- "cssmodules_ls",
+ "emmet_ls",
   "html",
   -- "jdtls",
   "jsonls",
   "solc",
   "sumneko_lua",
   --"tflint",
-  "tsserver",
+ -- "tsserver",
   --"pyright",
 }
 

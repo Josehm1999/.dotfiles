@@ -1,5 +1,5 @@
 return {
-  cmd = { "ls_emmet", "--stdio" },
+  cmd = { "emmet_ls", "--stdio" },
   filetypes = {
     "html",
     "css",
