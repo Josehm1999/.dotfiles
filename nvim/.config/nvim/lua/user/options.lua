@@ -40,4 +40,3 @@ vim.opt.shortmess:append "c"
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
 vim.opt.colorcolumn = "80"
-vim.transparent_window = true
