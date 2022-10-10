@@ -35,10 +35,20 @@ vim.cmd("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTre
 vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()")
 
 -- Manually format solidity files
-vim.cmd("autocmd BufWritePost *.sol silent !npx prettier --write '*.sol'")
+vim.cmd("autocmd BufWritePost *.sol silent !yarn prettier --write '**/*.sol'")
 
 -- Change syntax for .cshtml to html
 vim.cmd("autocmd BufNewFile,BufRead *.cshtml set ft=html")
+
+vim.cmd("autocmd ColorScheme * hi Normal ctermbg=none guibg=none")
+vim.cmd("autocmd ColorScheme * hi NormalNC ctermbg=none guibg=none")
+vim.cmd("autocmd ColorScheme * hi NonText ctermbg=none guibg=none")
+vim.cmd("autocmd ColorScheme * hi NvimTreeNormal cterbg=none guibg=none")
+vim.cmd("autocmd ColorScheme * hi SignColumn  guibg=none")
+vim.cmd("autocmd ColorScheme * hi TabLineFill ctermbg=none guibg=none")
+vim.cmd("autocmd ColorScheme * hi TabLine ctermbg=none guibg=none")
+vim.cmd("autocmd ColorScheme * hi TabLineSel ctermbg=none guibg=none")
+-- vim.cmd("autocmd ColorScheme * hi Title ctermbg=none guibg=none")
 
 -- Fixes Autocomment
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
