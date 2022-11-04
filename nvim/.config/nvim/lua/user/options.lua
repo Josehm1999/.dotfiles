@@ -39,3 +39,5 @@ vim.opt.fillchars.eob=" "
 vim.opt.shortmess:append "c"
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
+vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.o.foldcolumn = '1'

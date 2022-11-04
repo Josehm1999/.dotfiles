@@ -75,7 +75,7 @@ return packer.startup(function(use)
 
 	-- LSP
 	use({ "neovim/nvim-lspconfig" }) -- enable LSP
-	use({ "williamboman/nvim-lsp-installer"}) -- simple to use language server installer
+	use({ "williamboman/nvim-lsp-installer" }) -- simple to use language server installer
 	use({ "jose-elias-alvarez/null-ls.nvim", commit = "ff40739e5be6581899b43385997e39eecdbf9465" }) -- for formatters and linters
 	use({ "RRethy/vim-illuminate", commit = "c82e6d04f27a41d7fdcad9be0bce5bb59fcb78e5" })
 
@@ -124,13 +124,31 @@ return packer.startup(function(use)
 		"tpope/vim-dotenv",
 	} })
 
-  -- markdown-preview
-use({
-    "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
-})
+	-- LSP Based folding
+	use({
+		"kevinhwang91/nvim-ufo",
+		opt = true,
+		event = { "BufReadPre" },
+		wants = { "promise-async" },
+		requires = "kevinhwang91/promise-async",
+		disable = false,
+	})
+	-- markdown-preview
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	})
 
-use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

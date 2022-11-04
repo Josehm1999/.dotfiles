@@ -3,7 +3,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir" },
 	callback = function()
 		vim.cmd([[
-      nnoremap <silent> <buffer> q :close<CR> 
+     nnoremap <silent> <buffer> q :close<CR> 
       set nobuflisted 
     ]])
 	end,
@@ -35,7 +35,7 @@ vim.cmd("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTre
 vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()")
 
 -- Manually format solidity files
-vim.cmd("autocmd BufWritePost *.sol silent !yarn prettier --write '**/*.sol'")
+vim.cmd("autocmd BufWritePost *.sol silent !yarn prettier --write './contracts/*.sol'")
 
 -- Change syntax for .cshtml to html
 vim.cmd("autocmd BufNewFile,BufRead *.cshtml set ft=html")
