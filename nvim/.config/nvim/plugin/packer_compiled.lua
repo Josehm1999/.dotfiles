@@ -155,6 +155,11 @@ _G.packer_plugins = {
     path = "/home/josehm/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["markdown-preview.nvim"] = {
+    loaded = true,
+    path = "/home/josehm/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
+    url = "https://github.com/iamcco/markdown-preview.nvim"
+  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/home/josehm/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
@@ -210,6 +215,15 @@ _G.packer_plugins = {
     path = "/home/josehm/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring",
     url = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring"
   },
+  ["nvim-ufo"] = {
+    after = { "promise-async" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/josehm/.local/share/nvim/site/pack/packer/opt/nvim-ufo",
+    url = "https://github.com/kevinhwang91/nvim-ufo",
+    wants = { "promise-async" }
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/home/josehm/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
@@ -230,6 +244,15 @@ _G.packer_plugins = {
     path = "/home/josehm/.local/share/nvim/site/pack/packer/start/project.nvim",
     url = "https://github.com/ahmedkhalf/project.nvim"
   },
+  ["promise-async"] = {
+    load_after = {
+      ["nvim-ufo"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/josehm/.local/share/nvim/site/pack/packer/opt/promise-async",
+    url = "https://github.com/kevinhwang91/promise-async"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/josehm/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -249,6 +272,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/josehm/.local/share/nvim/site/pack/packer/start/vim-bbye",
     url = "https://github.com/moll/vim-bbye"
+  },
+  ["vim-be-good"] = {
+    loaded = true,
+    path = "/home/josehm/.local/share/nvim/site/pack/packer/start/vim-be-good",
+    url = "https://github.com/ThePrimeagen/vim-be-good"
   },
   ["vim-dadbod"] = {
     loaded = true,
@@ -287,6 +315,13 @@ time([[Defining packer_plugins]], false)
 time([[Config for cmp-tabnine]], true)
 try_loadstring("\27LJ\2\np\0\0\5\0\4\0\b6\0\0\0'\2\1\0B\0\2\2\18\3\0\0009\1\2\0005\4\3\0B\1\3\1K\0\1\0\1\0\3\tsort\2\20max_num_results\3\20\14max_lines\3è\a\nsetup\23cmp_tabnine.config\frequire\0", "config", "cmp-tabnine")
 time([[Config for cmp-tabnine]], false)
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Event lazy-loads
+time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'nvim-ufo'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
+time([[Defining lazy-load event autocommands]], false)
+vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
 end)

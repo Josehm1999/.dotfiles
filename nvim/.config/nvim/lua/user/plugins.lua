@@ -118,6 +118,34 @@ return packer.startup(function(use)
 		run = "./install.sh",
 		requires = "hrsh7th/nvim-cmp",
 	})
+	-- LSP Based folding
+	use({
+		"kevinhwang91/nvim-ufo",
+		opt = true,
+		event = { "BufReadPre" },
+		wants = { "promise-async" },
+		requires = "kevinhwang91/promise-async",
+		disable = false,
+	})
+
+	use({ "ThePrimeagen/vim-be-good" })
+
+	-- install without yarn or npm
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	})
+
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
