@@ -1,3 +1,6 @@
+local ui = require("harpoon.ui")
+local mark = require("harpoon.mark")
+
 -- Shorten function name
 local keymap = vim.keymap.set
 -- Silent keymap option
@@ -60,13 +63,20 @@ keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+keymap("n", "<leader>va", function ()
+    require("user.telescope").anime_selector()
+end, opts)
+keymap("n", "<leader>vrc", function()
+	require("user.telescope").search_dotfiles()
+end, opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
 
 -- Comment
-keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
-keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>')
+keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
+keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>')
 
 -- DAP
 keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
@@ -79,8 +89,25 @@ keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
 keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
+-- Lsp
+keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
 
--- markdown
-
-keymap("n", "<leader>md", ":MarkdownPreview<cr>", opts)
-
+--Harpoon
+keymap("n", "<leader>a", function()
+	mark.add_file()
+end)
+keymap("n", "<C-e>", function()
+	ui.toggle_quick_menu()
+end)
+keymap("n", "<C-a>", function()
+	ui.nav_file(1)
+end)
+keymap("n", "<C-n>", function()
+	ui.nav_file(2)
+end)
+keymap("n", "<C-s>", function()
+	ui.nav_file(3)
+end)
+keymap("n", "<C-t>", function()
+	ui.nav_file(4)
+end)
