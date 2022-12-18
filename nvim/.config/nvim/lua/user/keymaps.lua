@@ -1,6 +1,3 @@
-local ui = require("harpoon.ui")
-local mark = require("harpoon.mark")
-
 -- Shorten function name
 local keymap = vim.keymap.set
 -- Silent keymap option
@@ -44,6 +41,11 @@ keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
 -- Better paste
 keymap("v", "p", '"_dP', opts)
 
+--Better copy
+keymap("n", "<leader>y", '"+y', opts)
+keymap("v", "<leader>y", '"+y', opts)
+keymap("n", "<leader>Y", '"+Y', opts)
+
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)
@@ -53,6 +55,19 @@ keymap("i", "jk", "<ESC>", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
+--Move text with indentation
+keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
+keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
+
+keymap("n", "J", "mzJ`z", opts)
+
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "<C-u>", "<C-u>zz", opts)
+
+keymap("n", "n", "nzzzv", opts)
+keymap("n", "N", "Nzzzv", opts)
+
+keymap("n", "Q", "<nop>", opts)
 -- Plugins --
 
 -- NvimTree
@@ -64,15 +79,17 @@ keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
-keymap("n", "<leader>va", function ()
-    require("user.telescope").anime_selector()
+keymap("n", "<leader>va", function()
+	require("user.telescope").anime_selector()
 end, opts)
 keymap("n", "<leader>vrc", function()
 	require("user.telescope").search_dotfiles()
 end, opts)
 
--- Git
-keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
+-- -- Git
+-- keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
+
+keymap("n", "<leader><CR>", ":so<CR>", opts)
 
 -- Comment
 keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
@@ -92,22 +109,14 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 -- Lsp
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
 
---Harpoon
-keymap("n", "<leader>a", function()
-	mark.add_file()
-end)
-keymap("n", "<C-e>", function()
-	ui.toggle_quick_menu()
-end)
-keymap("n", "<C-a>", function()
-	ui.nav_file(1)
-end)
-keymap("n", "<C-n>", function()
-	ui.nav_file(2)
-end)
-keymap("n", "<C-s>", function()
-	ui.nav_file(3)
-end)
-keymap("n", "<C-t>", function()
-	ui.nav_file(4)
-end)
+--Tmux
+keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
+
+--Quickfix List
+keymap("n", "<C-}>", "<cmd>cnext<CR>zz", opts)
+keymap("n", "<C-{>", "<cmd>cprev<CR>zz", opts)
+keymap("n", "<leader>}", "<cmd>lnext<CR>zz", opts)
+keymap("n", "<leader>{", "<cmd>lprev<CR>zz", opts)
+
+keymap("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
+keymap("n", "<leader>x", "<cmd>!chmod +x %<CR>", opts)

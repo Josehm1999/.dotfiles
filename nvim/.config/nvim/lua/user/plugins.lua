@@ -105,6 +105,10 @@ return packer.startup(function(use)
 
 	-- Harpoon
 	use("theprimeagen/harpoon")
+    --Undotree
+    use('mbbill/undotree')
+    --Fugitive
+    use('tpope/vim-fugitive')
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
