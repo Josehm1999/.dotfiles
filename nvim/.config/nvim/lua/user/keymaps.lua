@@ -67,7 +67,7 @@ keymap("n", "<C-u>", "<C-u>zz", opts)
 keymap("n", "n", "nzzzv", opts)
 keymap("n", "N", "Nzzzv", opts)
 
-keymap("n", "Q", "<nop>", opts)
+-- keymap("n", "Q", "<nop>", opts)
 -- Plugins --
 
 -- NvimTree

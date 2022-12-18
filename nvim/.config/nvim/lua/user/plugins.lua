@@ -84,6 +84,14 @@ return packer.startup(function(use)
 	use({ "jose-elias-alvarez/null-ls.nvim", commit = "c0c19f32b614b3921e17886c541c13a72748d450" }) -- for formatters and linters
 	use({ "RRethy/vim-illuminate", commit = "a2e8476af3f3e993bb0d6477438aad3096512e42" })
 	use({ "simrat39/rust-tools.nvim", commit = "11dcd674781ba68a951ab4c7b740553cae8fe671" })
+	use({
+		"kevinhwang91/nvim-ufo",
+		opt = true,
+		event = { "BufReadPre" },
+		wants = { "promise-async" },
+		requires = "kevinhwang91/promise-async",
+		disable = false,
+	}) -- LSP Based folding
 
 	-- Telescope
 	use({ "nvim-telescope/telescope.nvim", commit = "76ea9a898d3307244dce3573392dcf2cc38f340f" })
@@ -105,10 +113,25 @@ return packer.startup(function(use)
 
 	-- Harpoon
 	use("theprimeagen/harpoon")
-    --Undotree
-    use('mbbill/undotree')
-    --Fugitive
-    use('tpope/vim-fugitive')
+	--Undotree
+	use("mbbill/undotree")
+	--Fugitive
+	use("tpope/vim-fugitive")
+
+	--Tabnine
+	use({
+		"tzachar/cmp-tabnine",
+		config = function()
+			local tabnine = require("cmp_tabnine.config")
+			tabnine:setup({
+				max_lines = 1000,
+				max_num_results = 20,
+				sort = true,
+			})
+		end,
+		run = "./install.sh",
+		requires = "hrsh7th/nvim-cmp",
+	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

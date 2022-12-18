@@ -5,8 +5,19 @@ if not status_cmp_ok then
 	return
 end
 
+local status_ufo_ok, ufo = pcall(require, "ufo")
+if not status_ufo_ok then
+	return
+end
+
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+M.capabilities.textDocument.foldingRange = {
+	dynamicRegistration = false,
+	lineFoldingOnly = true,
+}
+
+ufo.setup()
 M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 
 M.setup = function()
