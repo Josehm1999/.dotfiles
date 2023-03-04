@@ -16,7 +16,7 @@ end
 
 dap_install.setup({})
 dap_install.config("dnetcs", {})
-dap_install.config("codelldb", {})
+-- dap_install.config("codelldb", {})
 -- add other configs here
 
 dapui.setup({

@@ -9,7 +9,10 @@ local servers = {
 	"yamlls",
     "rust_analyzer",
     "csharp_ls",
-    "taplo"
+    "taplo",
+    "solidity",
+    "graphql",
+    "prismals"
 }
 
 local settings = {
@@ -30,6 +33,18 @@ require("mason-lspconfig").setup({
 	ensure_installed = servers,
 	automatic_installation = false,
 })
+
+local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
+local codelldb_adapter = {
+  type = "server",
+  port = "${port}",
+  executable = {
+    command = mason_path .. "bin/codelldb",
+    args = { "--port", "${port}" },
+    -- On windows you may have to uncomment this:
+    -- detached = false,
+  },
+}
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status_ok then
@@ -52,6 +67,9 @@ for _, server in pairs(servers) do
             autocmd BufEnter,CursorHold,InsertLeave,BufWritePost *.rs silent! lua vim.lsp.codelens.refresh()
           ]]
         end,
+      },
+      dap = {
+        adapter = codelldb_adapter
       },
       server = {
         on_attach = require("user.lsp.handlers").on_attach,
