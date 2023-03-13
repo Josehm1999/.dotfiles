@@ -20,6 +20,7 @@ vim.api.nvim_create_autocmd({ "User" }, {
 	end,
 })
 
+
 -- Set wrap and spell in markdown and gitcommit
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = { "gitcommit", "markdown" },

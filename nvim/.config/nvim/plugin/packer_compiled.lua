@@ -155,6 +155,11 @@ _G.packer_plugins = {
     path = "/home/josehm/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
+  ["lspkind-nvim"] = {
+    loaded = true,
+    path = "/home/josehm/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
+    url = "https://github.com/onsails/lspkind-nvim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/home/josehm/.local/share/nvim/site/pack/packer/start/lualine.nvim",
@@ -309,6 +314,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/josehm/.local/share/nvim/site/pack/packer/start/vim-dadbod",
     url = "https://github.com/tpope/vim-dadbod"
+  },
+  ["vim-dadbod-completion"] = {
+    loaded = true,
+    path = "/home/josehm/.local/share/nvim/site/pack/packer/start/vim-dadbod-completion",
+    url = "https://github.com/kristijanhusak/vim-dadbod-completion"
   },
   ["vim-dadbod-ui"] = {
     loaded = true,

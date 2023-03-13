@@ -10,7 +10,9 @@ local servers = {
     "rust_analyzer",
     "csharp_ls",
     "taplo",
-    "solc"
+    "solc",
+    "tailwindcss",
+    "emmet_ls"
 }
 
 local settings = {
@@ -57,9 +59,9 @@ for _, server in pairs(servers) do
         capabilities = require("user.lsp.handlers").capabilities,
     }
 
-    if server == "solidity_ls" then
-        local solidity_opts = require("user.lsp.settings.solidity_ls")
-        opts = vim.tbl_deep_extend("force", solidity_opts, opts)
+    if server == "emmet_ls" then
+        local emmet_opts = require("user.lsp.settings.emmet_ls")
+        opts = vim.tbl_deep_extend("force", emmet_opts, opts)
     end
 
     if server == "rust_analyzer" then

@@ -64,6 +64,8 @@ keymap("n", "J", "mzJ`z", opts)
 
 keymap("n", "<C-d>", "<C-d>zz", opts)
 keymap("n", "<C-u>", "<C-u>zz", opts)
+-- keymap("n", "<C-L>", "20zlzz", opts)
+-- keymap("n", "<C-H>", "20zhzz", opts)
 
 keymap("n", "n", "nzzzv", opts)
 keymap("n", "N", "Nzzzv", opts)

@@ -1,6 +1,50 @@
+local M = {}
+
 vim.g.db_ui_use_nerd_fonts = 1
 vim.g.db_ui_show_database_icon = 1
 vim.g.db_ui_force_echo_notifications = 1
+vim.g.db_ui_auto_execute_table_helpers = 1
+vim.g.db_ui_tmp_query_location = "./queries"
+vim.g.completion_matching_strategy_list = { "exact", "substring" }
+
+local function db_completion()
+	require("cmp").setup.buffer({ sources = { { name = "vim-dadbod-completion" } } })
+end
+
+function M.setup()
+	vim.g.db_ui_save_location = vim.fn.stdpath("config") .. require("plenary.path").path.sep .. "db_ui"
+
+	vim.api.nvim_create_autocmd("FileType", {
+		pattern = {
+			"sql",
+		},
+		command = [[setlocal omnifunc=vim_dadbod_completion#omni]],
+	})
+
+	vim.api.nvim_create_autocmd("FileType", {
+		pattern = {
+			"sql",
+			"mysql",
+			"plsql",
+		},
+		callback = function()
+			vim.schedule(db_completion)
+		end,
+	})
+
+-- 	vim.api.nvim_exec(
+-- 		[[
+--   autocmd FileType sql lua DbuiCustom()
+-- ]],
+-- 		false
+-- 	)
+end
+
+vim.g.completion_chain_complete_list = {
+	sql = {
+		{ complete_items = { "vim-dadbod-completion" } },
+	},
+}
 
 vim.g.db_ui_table_helpers = {
 	mysql = {
@@ -11,7 +55,28 @@ vim.g.db_ui_table_helpers = {
 	sqlite = {
 		Describe = "PRAGMA table_info({table})",
 	},
+	sqlserver = {
+		Stored_Procedures = "SELECT name FROM sys.procedures WHERE schema_id = SCHEMA_ID('{schema}') ORDER BY name",
+	},
+	default = {
+		Stored_Procedures = "SELECT name FROM sys.procedures WHERE schema_id = SCHEMA_ID('{schema}') ORDER BY name",
+	},
+	--   mssql = {
+	-- Count = "select count(1) from {optional_schema}{table}",
+	--       List = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND (TABLE_NAME LIKE 't%' OR TABLE_NAME LIKE 'v%');",
+	--       Stored_procedures = "SELECT ROUTINE_NAME FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_TYPE = 'PROCEDURE';"
+	--   }
 }
+
+-- function DbuiCustom()
+-- 	vim.fn["dbui#open"]({
+-- 		Custom = {
+-- 			{ name = "Stored Procedures", sql = "Stored Procedures" },
+-- 		},
+-- 	})
+-- end
+
+-- vim.api.nvim_set_keymap("n", "<leader><leader>d", ":lua DbuiCustom()<CR>", { noremap = true, silent = true })
 
 vim.g.db_ui_icons = {
 	expanded = {
@@ -46,3 +111,5 @@ vim.keymap.set("n", "<leader><leader>db", ":tab DBUI<cr>", {})
 
 -- just close the tab, but context related of the keybinding
 vim.keymap.set("n", "<leader><leader>tq", ":tabclose<cr>")
+
+return M
