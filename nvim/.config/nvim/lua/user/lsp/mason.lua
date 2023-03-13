@@ -12,7 +12,9 @@ local servers = {
     "taplo",
     "solidity",
     "graphql",
-    "prismals"
+    "prismals",
+    "tailwindcss",
+    "emmet_ls"
 }
 
 local settings = {
@@ -31,20 +33,20 @@ local settings = {
 require("mason").setup(settings)
 require("mason-lspconfig").setup({
 	ensure_installed = servers,
-	automatic_installation = false,
+	automatic_installation = true,
 })
 
-local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
-local codelldb_adapter = {
-  type = "server",
-  port = "${port}",
-  executable = {
-    command = mason_path .. "bin/codelldb",
-    args = { "--port", "${port}" },
-    -- On windows you may have to uncomment this:
-    -- detached = false,
-  },
-}
+-- local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
+-- local codelldb_adapter = {
+--   type = "server",
+--   port = "${port}",
+--   executable = {
+--     command = mason_path .. "bin/codelldb",
+--     args = { "--port", "${port}" },
+--     -- On windows you may have to uncomment this:
+--     -- detached = false,
+--   },
+-- }
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status_ok then
@@ -67,9 +69,6 @@ for _, server in pairs(servers) do
             autocmd BufEnter,CursorHold,InsertLeave,BufWritePost *.rs silent! lua vim.lsp.codelens.refresh()
           ]]
         end,
-      },
-      dap = {
-        adapter = codelldb_adapter
       },
       server = {
         on_attach = require("user.lsp.handlers").on_attach,
@@ -100,3 +99,9 @@ for _, server in pairs(servers) do
 	lspconfig[server].setup(opts)
     ::continue::
 end
+
+
+-- filter the list for the ones not globally installed
+require("mason-tool-installer").setup {
+  ensure_installed = require "user.lsp.tools",
+}
