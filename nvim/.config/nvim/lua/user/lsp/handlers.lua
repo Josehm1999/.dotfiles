@@ -12,6 +12,7 @@ end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 M.capabilities.textDocument.foldingRange = {
 	dynamicRegistration = false,
 	lineFoldingOnly = true,
@@ -56,14 +57,12 @@ M.setup = function()
 		border = "rounded",
 	})
 
-    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-      vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = true,
-        signs = true,
-        underline = true,
-        update_in_insert = true,
-      }
-    )
+	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+		virtual_text = true,
+		signs = true,
+		underline = true,
+		update_in_insert = true,
+	})
 	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
 		border = "rounded",
 	})
@@ -95,6 +94,11 @@ M.on_attach = function(client, bufnr)
 
 	if client.name == "sumneko_lua" then
 		client.server_capabilities.documentFormattingProvider = false
+	end
+
+	if client.name == "angularls" then
+		client.server_capabilities.documentRangeFormattingProvider = false
+		client.server_capabilities.foldingRangeProvider = false
 	end
 
 	lsp_keymaps(bufnr)

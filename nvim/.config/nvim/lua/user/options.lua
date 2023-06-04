@@ -46,3 +46,5 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 vim.opt.incsearch = true
 
+-- vim.opt.spelllang = 'en_us'
+-- vim.opt.spell = true

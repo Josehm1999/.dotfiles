@@ -14,7 +14,7 @@ null_ls.setup({
 	sources = {
 		formatting.prettier.with({
 			extra_filetypes = { "toml" },
-			extra_args = { "--single-quote", "--jsx-single-quote" },
+			extra_args = { "--single-quote", "--jsx-single-quote", "--tab-width 4" },
 		}),
 		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.stylua,
@@ -23,5 +23,6 @@ null_ls.setup({
 		null_ls.builtins.code_actions.refactoring,
 		diagnostics.solhint,
 		null_ls.builtins.code_actions.gitsigns,
+		require("typescript.extensions.null-ls.code-actions"),
 	},
 })

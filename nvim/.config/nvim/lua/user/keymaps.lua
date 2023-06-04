@@ -75,15 +75,18 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
+keymap("n", "<leader>fg", ":Telescope git_files<CR>", opts)
+keymap("n", "<leader>fs", function()
+    require("user.telescope").grep_string()
+end, opts)
 keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
-keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>va", function()
-	require("user.telescope").anime_selector()
+    require("user.telescope").anime_selector()
 end, opts)
 keymap("n", "<leader>vrc", function()
-	require("user.telescope").search_dotfiles()
+    require("user.telescope").search_dotfiles()
 end, opts)
 
 -- -- Git
@@ -118,7 +121,6 @@ keymap("n", "<leader>{", "<cmd>lprev<CR>zz", opts)
 
 keymap("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
 keymap("n", "<leader>x", "<cmd>!chmod +x %<CR>", opts)
-
 
 --Source files
 keymap("n", "<leader><CR>", ":so<CR>", opts)
