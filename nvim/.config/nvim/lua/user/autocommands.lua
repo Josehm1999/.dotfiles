@@ -20,7 +20,6 @@ vim.api.nvim_create_autocmd({ "User" }, {
 	end,
 })
 
-
 -- Set wrap and spell in markdown and gitcommit
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = { "gitcommit", "markdown" },
@@ -54,3 +53,24 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	pattern = "*",
 	command = "%s/\\s\\+$//e",
 })
+
+local s_clip = '/mnt/c/Windows/System32/clip.exe'  -- change this path according to your mount point
+if vim.fn.has("wsl") == 1 then
+	vim.api.nvim_create_autocmd("TextYankPost", {
+
+		group = vim.api.nvim_create_augroup("Yank", { clear = true }),
+
+		callback = function()
+			vim.fn.system(s_clip, vim.fn.getreg('"'))
+		end,
+	})
+end
+
+-- local s_clip = '/mnt/c/Windows/System32/clip.exe'  -- change this path according to your mount point
+-- if vim.fn.executable(s_clip) then
+--     vim.api.nvim_create_autocmd
+--     --     augroup WSLYank
+--     --     autocmd!
+--     --     autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+--     -- augroup END
+-- end

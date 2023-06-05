@@ -1,5 +1,5 @@
 local servers = {
-    "sumneko_lua",
+    "lua_ls",
     "cssls",
     "html",
     "tsserver",
@@ -28,22 +28,10 @@ local settings = {
     max_concurrent_installers = 4,
 }
 
-local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
-
-local codelldb_adapter = {
-    type = "server",
-    port = "${port}",
-    executable = {
-        command = mason_path .. "bin/codelldb",
-        args = { "--port", "${port}" },
-        -- On windows you may have to uncomment this:
-        -- detached = false,
-    },
-}
 require("mason").setup(settings)
 require("mason-lspconfig").setup({
     ensure_installed = servers,
-    automatic_installation = false,
+    automatic_installation = true,
 })
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
@@ -59,27 +47,47 @@ for _, server in pairs(servers) do
         capabilities = require("user.lsp.handlers").capabilities,
     }
 
-    if server == "emmet_ls" then
-        local emmet_opts = require("user.lsp.settings.emmet_ls")
-        opts = vim.tbl_deep_extend("force", emmet_opts, opts)
-    end
-
     if server == "rust_analyzer" then
+        local ih = require("inlay-hints")
         require("rust-tools").setup {
             tools = {
+                executor = require("rust-tools/executors").termopen,
+                reload_workspace_from_cargo_toml = true,
+                runnables = {
+                    use_telescope = true,
+                },
+                inlay_hints = {
+                    auto = false,
+                    only_current_line = false,
+                    show_parameter_hints = false,
+                    parameter_hints_prefix = "<-",
+                    other_hints_prefix = "=>",
+                    max_len_align = false,
+                    max_len_align_padding = 1,
+                    right_align = false,
+                    right_align_padding = 7,
+                    highlight = "Comment",
+                },
+                hover_actions = {
+                    border = "rounded",
+                },
+                dap = {
+                    adapter = {
+                        type = "executable",
+                        command = "codelldb",
+                        name = "rt_lldb"
+                    }
+                },
                 on_initialized = function()
-                    vim.cmd [[
-            autocmd BufEnter,CursorHold,InsertLeave,BufWritePost *.rs silent! lua vim.lsp.codelens.refresh()
-          ]]
+                    ih.set_all()
+                    vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" }, {
+                        pattern = { "*.rs" },
+                        callback = function()
+                            local _, _ = pcall(vim.lsp.codelens.refresh)
+                        end,
+                    })
                 end,
             },
-            -- dap = {
-            --     adapter = {
-            --         type = "executable",
-            --         command = "lldb-vscode",
-            --         name = "rt_lldb",
-            --     },
-            -- },
             server = {
                 on_attach = require("user.lsp.handlers").on_attach,
                 capabilities = require("user.lsp.handlers").capabilities,
@@ -91,6 +99,12 @@ for _, server in pairs(servers) do
                         checkOnSave = {
                             command = "clippy",
                         },
+                        procMacro = {
+                            enable = true
+                        },
+                        cargo = {
+                            loadOutDirsFromCheck = true,
+                        }
                     },
                 },
             },
@@ -109,3 +123,9 @@ for _, server in pairs(servers) do
     lspconfig[server].setup(opts)
     ::continue::
 end
+
+
+-- filter the list for the ones not globally installed
+require("mason-tool-installer").setup {
+    ensure_installed = require "user.lsp.tools",
+}

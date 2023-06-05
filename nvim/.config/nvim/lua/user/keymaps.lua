@@ -42,9 +42,9 @@ keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
 keymap("v", "p", '"_dP', opts)
 
 --Better copy (Separates nvim clipboard from system's )
-keymap("n", "<leader>y", '"+y', opts)
-keymap("v", "<leader>y", '"+y', opts)
-keymap("n", "<leader>Y", '"+Y', opts)
+-- keymap("n", "<leader>y", '"+y', opts)
+-- keymap("v", "<leader>y", '"+y', opts)
+-- keymap("n", "<leader>Y", '"+Y', opts)
 
 -- Insert --
 -- Press jk fast to enter
@@ -75,13 +75,21 @@ keymap("n", "N", "Nzzzv", opts)
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
+
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
+keymap("n", "<leader>fg", ":Telescope git_files<CR>", opts)
+keymap("n", "<leader>fs", function()
+    require("user.telescope").grep_string()
+end, opts)
 keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+keymap("n", "<leader>va", function()
+    require("user.telescope").anime_selector()
+end, opts)
 keymap("n", "<leader>vrc", function()
-	require("user.telescope").search_dotfiles()
+    require("user.telescope").search_dotfiles()
 end, opts)
 
 -- -- Git
