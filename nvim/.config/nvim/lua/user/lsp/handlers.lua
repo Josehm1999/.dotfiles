@@ -101,6 +101,10 @@ M.on_attach = function(client, bufnr)
 		client.server_capabilities.foldingRangeProvider = false
 	end
 
+    if client.server_capabilities["documentSymbolProvider"] then
+      require("nvim-navic").attach(client, bufnr)
+    end
+
 	lsp_keymaps(bufnr)
 	local status_ok, illuminate = pcall(require, "illuminate")
 	if not status_ok then

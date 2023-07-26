@@ -25,6 +25,7 @@ require("user.color-picker")
 require("user.vim-dadbod-ui").setup()
 require("user.treesitter-context")
 require("user.inline-hints")
+require("user.barbecue")
 
 
 vim.g.mapleader = ' '
