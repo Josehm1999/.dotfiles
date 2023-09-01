@@ -16,7 +16,8 @@ local servers = {
     "tailwindcss",
     "emmet_ls",
     "angularls",
-    "eslint"
+    "eslint",
+    "lemminx"
 }
 
 local settings = {
@@ -130,6 +131,11 @@ end
 
 
 -- filter the list for the ones not globally installed
-require("mason-tool-installer").setup {
-    ensure_installed = require "user.lsp.tools",
-}
+-- require("mason-tool-installer").setup {
+--     ensure_installed = {
+--         "go-debug-adapter",
+--         "php-debug-adapter",
+--         "js-debug-adapter",
+--         "codelldb",
+--     }
+-- }
