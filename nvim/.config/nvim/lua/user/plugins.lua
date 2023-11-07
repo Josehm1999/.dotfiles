@@ -50,7 +50,13 @@ return packer.startup(function(use)
     use({ "numToStr/Comment.nvim", commit = "97a188a98b5a3a6f9b1b850799ac078faa17ab67" })
     use({ "JoosepAlviste/nvim-ts-context-commentstring", commit = "32d9627123321db65a4f158b72b757bcaef1a3f4" })
     -- use({ "kyazdani42/nvim-web-devicons", commit = "563f3635c2d8a7be7933b9e547f7c178ba0d4352" })
-    use({ "kyazdani42/nvim-tree.lua", commit = "7282f7de8aedf861fe0162a559fc2b214383c51c" })
+    use({ "kyazdani42/nvim-tree.lua",commit= "7282f7de8aedf861fe0162a559fc2b214383c51c" })
+    -- use {
+    --     'nvim-tree/nvim-tree.lua',
+    -- requires = {
+    --     'nvim-tree/nvim-web-devicons', -- optional
+    --     },
+    -- }
     use({ "akinsho/bufferline.nvim", commit = "83bf4dc7bff642e145c8b4547aa596803a8b4dc4" })
     use({ "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" })
     use({ "nvim-lualine/lualine.nvim", commit = "a52f078026b27694d2290e34efa61a6e4a690621" })
@@ -88,9 +94,9 @@ return packer.startup(function(use)
 
     -- LSP
     -- use { "williamboman/nvim-lsp-installer", commit = "e9f13d7acaa60aff91c58b923002228668c8c9e6" } -- simple to use language server installer
-    use({ "neovim/nvim-lspconfig", commit = "f11fdff7e8b5b415e5ef1837bdcdd37ea6764dda" }) -- enable LSP
-    use({ "williamboman/mason.nvim", commit = "bfc5997e52fe9e20642704da050c415ea1d4775f" })
-    use({ "williamboman/mason-lspconfig.nvim", commit = "0eb7cfefbd3a87308c1875c05c3f3abac22d367c" })
+    use({ "neovim/nvim-lspconfig",  }) -- enable LSP
+    use({ "williamboman/mason.nvim" })
+    use({ "williamboman/mason-lspconfig.nvim" })
     use({ "WhoIsSethDaniel/mason-tool-installer.nvim" })
     use({ "jose-elias-alvarez/null-ls.nvim", commit = "c0c19f32b614b3921e17886c541c13a72748d450" }) -- for formatters and linters
     use({ "RRethy/vim-illuminate", commit = "a2e8476af3f3e993bb0d6477438aad3096512e42" })
@@ -129,7 +135,7 @@ return packer.startup(function(use)
     }) -- LSP Based folding
 
     -- Telescope
-    use({ "nvim-telescope/telescope.nvim", commit = "76ea9a898d3307244dce3573392dcf2cc38f340f" })
+    use({ "nvim-telescope/telescope.nvim" })
     use({ "nvim-telescope/telescope-media-files.nvim" })
     use({ "nvim-telescope/telescope-ui-select.nvim" })
     use({
@@ -153,7 +159,6 @@ return packer.startup(function(use)
     -- Treesitter
     use({
         "nvim-treesitter/nvim-treesitter",
-        commit = "8e763332b7bf7b3a426fd8707b7f5aa85823a5ac",
     })
 
     -- Git

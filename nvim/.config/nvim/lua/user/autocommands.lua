@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 vim.cmd("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
-vim.cmd("autocmd FileType typescript,json let g:lsp_typescript_folding_enabled = v:false")
+-- vim.cmd("autocmd FileType typescript,json let g:lsp_typescript_folding_enabled = v:false")
 
 vim.api.nvim_create_autocmd({ "VimResized" }, {
     callback = function()

@@ -1,5 +1,5 @@
 local servers = {
-    "sumneko_lua",
+    "lua_ls",
     "cssls",
     "html",
     "tsserver",
@@ -8,7 +8,7 @@ local servers = {
     "jsonls",
     "yamlls",
     "rust_analyzer",
-    "csharp_ls",
+    -- "csharp_ls",
     "taplo",
     "solidity",
     "graphql",
