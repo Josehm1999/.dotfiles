@@ -10,9 +10,13 @@ local servers = {
     "rust_analyzer",
     "csharp_ls",
     "taplo",
-    "solc",
+    "solidity",
+    "graphql",
+    "prismals",
     "tailwindcss",
-    "emmet_ls"
+    "emmet_ls",
+    "angularls",
+    "eslint"
 }
 
 local settings = {
