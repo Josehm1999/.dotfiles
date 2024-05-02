@@ -1,5 +1,5 @@
 local servers = {
-    "sumneko_lua",
+    "lua_ls",
     "cssls",
     "html",
     "tsserver",
@@ -8,7 +8,6 @@ local servers = {
     "jsonls",
     "yamlls",
     "rust_analyzer",
-    "csharp_ls",
     "taplo",
     "solidity",
     "graphql",
@@ -17,7 +16,9 @@ local servers = {
     "emmet_ls",
     "angularls",
     "eslint",
-    "lemminx"
+    "lemminx",
+    "gopls",
+    "omnisharp"
 }
 
 local settings = {

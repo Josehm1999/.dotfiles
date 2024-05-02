@@ -10,7 +10,7 @@ require("user.lsp.null-ls")
 local lspconfig = require("lspconfig")
 local servers = {
     emmet_ls = require("user.lsp.settings.emmet_ls"),
-    sumneko_lua = require("user.lsp.settings.sumneko_lua"),
+    lua_ls = require("user.lsp.settings.sumneko_lua"),
     jsonls = require("user.lsp.settings.json_ls"),
     eslint = require("user.lsp.settings.eslint_ls"),
 }

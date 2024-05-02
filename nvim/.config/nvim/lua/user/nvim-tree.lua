@@ -8,7 +8,7 @@ if not config_status_ok then
 	return
 end
 
-local tree_cb = nvim_tree_config.nvim_tree_callback
+-- local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup({
 	update_focused_file = {
@@ -56,12 +56,12 @@ nvim_tree.setup({
 	view = {
 		width = 30,
 		side = "left",
-		mappings = {
-			list = {
-				{ key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
-				{ key = "h", cb = tree_cb("close_node") },
-				{ key = "v", cb = tree_cb("vsplit") },
-			},
-		},
+		-- mappings = {
+		-- 	list = {
+		-- 		{ key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
+		-- 		{ key = "h", cb = tree_cb("close_node") },
+		-- 		{ key = "v", cb = tree_cb("vsplit") },
+		-- 	},
+		-- },
 	},
 })

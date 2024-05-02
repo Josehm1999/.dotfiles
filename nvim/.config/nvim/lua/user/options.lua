@@ -45,6 +45,7 @@ vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 vim.opt.incsearch = true
+vim.g.skip_ts_context_commentstring_module = true
 
 -- vim.opt.spelllang = 'en_us'
 -- vim.opt.spell = true

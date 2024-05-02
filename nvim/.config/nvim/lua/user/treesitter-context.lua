@@ -1,4 +1,4 @@
-local status_ok, treesitter_context = pcall(require, "treesitter-context")
+local status_ok, treesitter_context = pcall(require, "ts_context_commentstring")
 if not status_ok then
 	return
 end

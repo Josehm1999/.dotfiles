@@ -27,6 +27,7 @@ require("user.treesitter-context")
 require("user.inline-hints")
 require("user.barbecue")
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-vim.g.mapleader = ' '
-vim.g.maplocalleader= ' '
+require'nvim-tree'.setup {}
