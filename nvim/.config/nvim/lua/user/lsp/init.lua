@@ -10,9 +10,9 @@ require("user.lsp.null-ls")
 local lspconfig = require("lspconfig")
 local servers = {
     emmet_ls = require("user.lsp.settings.emmet_ls"),
-    lua_ls= require("user.lsp.settings.lua_ls"),
+    lua_ls = require("user.lsp.settings.lua_ls"),
     jsonls = require("user.lsp.settings.json_ls"),
-    eslint = require("user.lsp.settings.eslint_ls"),
+    eslint = require("user.lsp.settings.eslint_ls")
 }
 
 for name, config in pairs(servers) do

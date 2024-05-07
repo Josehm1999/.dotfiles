@@ -8,6 +8,7 @@ local servers = {
     "jsonls",
     "yamlls",
     "rust_analyzer",
+    "omnisharp",
     "taplo",
     "solidity",
     "graphql",
@@ -18,7 +19,7 @@ local servers = {
     "eslint",
     "lemminx",
     "gopls",
-    "omnisharp",
+    "astro",
 }
 
 local settings = {

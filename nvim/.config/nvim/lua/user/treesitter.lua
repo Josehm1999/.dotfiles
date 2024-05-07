@@ -29,3 +29,11 @@ configs.setup({
 		enable_autocmd = false,
 	},
 })
+
+vim.filetype.add({
+	extension = {
+		mdx = "mdx",
+	},
+})
+
+vim.treesitter.language.register("markdown", "mdx")
