@@ -29,5 +29,3 @@ require("user.barbecue")
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-
-require'nvim-tree'.setup {}

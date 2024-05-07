@@ -18,7 +18,7 @@ local servers = {
     "eslint",
     "lemminx",
     "gopls",
-    "omnisharp"
+    "omnisharp",
 }
 
 local settings = {
@@ -55,7 +55,7 @@ for _, server in pairs(servers) do
 
     if server == "rust_analyzer" then
         local ih = require("inlay-hints")
-        require("rust-tools").setup {
+        require("rust-tools").setup({
             tools = {
                 executor = require("rust-tools/executors").termopen,
                 reload_workspace_from_cargo_toml = true,
@@ -81,8 +81,8 @@ for _, server in pairs(servers) do
                     adapter = {
                         type = "executable",
                         command = "codelldb",
-                        name = "rt_lldb"
-                    }
+                        name = "rt_lldb",
+                    },
                 },
                 on_initialized = function()
                     ih.set_all()
@@ -106,17 +106,21 @@ for _, server in pairs(servers) do
                             command = "clippy",
                         },
                         procMacro = {
-                            enable = true
+                            enable = true,
                         },
                         cargo = {
                             loadOutDirsFromCheck = true,
-                        }
+                        },
                     },
                 },
             },
-        }
+        })
 
         goto continue
+    end
+
+    if server == "omnisharp" then
+        vim.lsp.handlers["textDocument/definition"] = require("omnisharp_extended").handler
     end
 
     server = vim.split(server, "@")[1]
@@ -129,7 +133,6 @@ for _, server in pairs(servers) do
     lspconfig[server].setup(opts)
     ::continue::
 end
-
 
 -- filter the list for the ones not globally installed
 -- require("mason-tool-installer").setup {
