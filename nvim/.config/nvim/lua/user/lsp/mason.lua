@@ -121,7 +121,10 @@ for _, server in pairs(servers) do
     end
 
     if server == "omnisharp" then
-        vim.lsp.handlers["textDocument/definition"] = require("omnisharp_extended").handler
+        -- vim.lsp.handlers["textDocument/definition"] = require("omnisharp_extended").definition_handler
+        -- vim.lsp.handlers["textDocument/typeDefinition"] = require("omnisharp_extended").type_definition_handler
+        -- vim.lsp.handlers["textDocument/references"] = require("omnisharp_extended").references_handler
+        -- vim.lsp.handlers["textDocument/implementation"] = require("omnisharp_extended").implementation_handler
     end
 
     server = vim.split(server, "@")[1]

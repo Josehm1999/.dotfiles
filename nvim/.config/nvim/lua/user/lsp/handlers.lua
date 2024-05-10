@@ -68,7 +68,7 @@ M.setup = function()
     })
 end
 
-local function lsp_keymaps(bufnr)
+local function lsp_keymaps(client, bufnr)
     local opts = { noremap = true, silent = true }
     local keymap = vim.api.nvim_buf_set_keymap
     keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -85,6 +85,10 @@ local function lsp_keymaps(bufnr)
     keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
     keymap(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+
+    if client.name == "omnisharp" then
+        keymap(bufnr, "n", "go", "<cmd>lua require('omnisharp_extended').lsp_definition()<cr>", opts)
+    end
 end
 
 M.on_attach = function(client, bufnr)
@@ -113,7 +117,7 @@ M.on_attach = function(client, bufnr)
         require("nvim-navic").attach(client, bufnr)
     end
 
-    lsp_keymaps(bufnr)
+    lsp_keymaps(client, bufnr)
     local status_ok, illuminate = pcall(require, "illuminate")
     if not status_ok then
         return
