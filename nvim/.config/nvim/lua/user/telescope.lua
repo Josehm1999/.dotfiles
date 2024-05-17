@@ -70,8 +70,6 @@ telescope.setup({
             i = {
                 ["<Down>"] = actions.cycle_history_next,
                 ["<Up>"] = actions.cycle_history_prev,
-                ["<C-j>"] = actions.cycle_history_next,
-                ["<C-k>"] = actions.cycle_history_prev,
             },
         },
         extensions = {
