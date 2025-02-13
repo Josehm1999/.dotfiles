@@ -59,11 +59,12 @@ cmp.setup({
         --     },
         --     before = tailwind.formatter,
         -- }),
+        --
         format = function(entry, vim_item)
-            local max_width = 0
-            if max_width ~= 0 and #vim_item.abbr > max_width then
-                vim_item.abbr = string.sub(vim_item.abbr, 1, max_width - 1) .. icons.ui.Ellipsis
-            end
+            -- local max_width = 0
+            -- if max_width ~= 0 and #vim_item.abbr > max_width then
+            --     vim_item.abbr = string.sub(vim_item.abbr, 1, max_width - 1) .. icons.ui.Ellipsis
+            -- end
             vim_item.kind = lspkind.presets.default[vim_item.kind] .. " " .. vim_item.kind
 
             if entry.source.name == "copilot" then
@@ -139,9 +140,16 @@ cmp.setup({
         -- 	compare.sort_text,
         -- },
     },
+    -- view = {
+        -- entries = "",
+    -- },
     window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered({
+            winhighlight = "Normal:Normal,FloatBorder:None,CursorLine:Visual,Search:None",
+        }),
+        documentation = cmp.config.window.bordered({
+            winhighlight = "Normal:Normal,FloatBorder:None,CursorLine:Visual,Search:None",
+        }),
     },
     experimental = {
         ghost_text = false,
