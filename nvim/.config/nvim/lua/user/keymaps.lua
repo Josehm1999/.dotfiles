@@ -37,7 +37,7 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 
 -- Close buffers
-keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
+keymap("n", "<S-q>", "<cmd>lua Snacks.bufdelete()<CR>", opts)
 
 -- Better paste
 keymap("v", "p", '"_dP', opts)
@@ -78,16 +78,16 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>fg", ":Telescope git_files<CR>", opts)
 keymap("n", "<leader>fs", function()
-    require("user.telescope").grep_string()
+	require("user.telescope").grep_string()
 end, opts)
 keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>va", function()
-    require("user.telescope").anime_selector()
+	require("user.telescope").anime_selector()
 end, opts)
 keymap("n", "<leader>vrc", function()
-    require("user.telescope").search_dotfiles()
+	require("user.telescope").search_dotfiles()
 end, opts)
 
 -- -- Git
@@ -108,8 +108,8 @@ keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
 keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
--- Lsp
-keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
+-- Lsp - Moved to user.lsp.conform
+-- keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
 
 --Tmux
 keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
