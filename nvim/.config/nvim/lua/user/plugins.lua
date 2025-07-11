@@ -49,7 +49,7 @@ return packer.startup(function(use)
 	use({ "windwp/nvim-autopairs", commit = "4fc96c8f3df89b6d23e5092d31c866c53a346347" }) -- Autopairs, integrates with both cmp and treesitter
 	use({ "numToStr/Comment.nvim", commit = "97a188a98b5a3a6f9b1b850799ac078faa17ab67" })
 	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
-	use({ "kyazdani42/nvim-tree.lua", commit = "7282f7de8aedf861fe0162a559fc2b214383c51c" })
+	-- use({ "kyazdani42/nvim-tree.lua", commit = "7282f7de8aedf861fe0162a559fc2b214383c51c" })
 	-- use {
 	--     'nvim-tree/nvim-tree.lua',
 	-- requires = {
@@ -117,7 +117,7 @@ return packer.startup(function(use)
 	-- LSP
 	use({ "neovim/nvim-lspconfig" }) -- enable LSP
 	use({ "williamboman/mason.nvim" })
-	use({ "williamboman/mason-lspconfig.nvim" })
+	use({ "williamboman/mason-lspconfig.nvim", commit = "b9501106148f434a7ce528bca65725b60ea3e5d3" })
 	use({ "WhoIsSethDaniel/mason-tool-installer.nvim" })
 
 	--Un grande pipipip
@@ -257,6 +257,30 @@ return packer.startup(function(use)
 
 	use({
 		"David-Kunz/gen.nvim",
+	})
+
+	use({
+		"stevearc/oil.nvim",
+	})
+
+	use({
+		"echasnovski/mini.nvim",
+		config = function()
+			-- Better Around/Inside textobjects
+			--
+			-- Examples:
+			--  - va)  - [V]isually select [A]round [)]paren
+			--  - yinq - [Y]ank [I]nside [N]ext [Q]uote
+			--  - ci'  - [C]hange [I]nside [']quote
+			require("mini.ai").setup({ n_lines = 500 })
+
+			-- Add/delete/replace surroundings (brackets, quotes, etc.)
+			--
+			-- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
+			-- - sd'   - [S]urround [D]elete [']quotes
+			-- - sr)'  - [S]urround [R]eplace [)] [']
+			require("mini.surround").setup()
+		end,
 	})
 
 	-- Automatically set up your configuration after cloning packer.nvim

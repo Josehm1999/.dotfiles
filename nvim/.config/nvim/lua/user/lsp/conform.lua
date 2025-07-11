@@ -1,30 +1,30 @@
 local conform_status_ok, conform = pcall(require, "conform")
 if not conform_status_ok then
-    return
+	return
 end
 
 conform.setup({
-    formatters_by_ft = {
-        lua = { "stylua" },
-        go = { "goimports", "gofmt" },
-        sql = { "sql_formatter" },
-        javascript = { "prettier" },
-        typescript = { "prettier" },
-        toml = { "prettier" },
-        astro = { "prettier" },
-        mdx = { "prettier" },
-        html = { "prettier" },
-        css = { "prettier" },
-        javascriptreact = { "prettier" },
-        typescriptreact = { "prettier" },
-        svelte = { "prettier" },
-    },
+	formatters_by_ft = {
+		lua = { "stylua" },
+		go = { "goimports", "gofmt" },
+		sql = { "sql_formatter" },
+		javascript = { "prettier" },
+		typescript = { "prettier" },
+		toml = { "prettier" },
+		astro = { "biome" },
+		mdx = { "prettier" },
+		html = { "prettier" },
+		css = { "prettier" },
+		javascriptreact = { "prettier" },
+		typescriptreact = { "prettier" },
+		svelte = { "prettier" },
+	},
 })
 
 vim.keymap.set({ "n", "v" }, "<leader>lf", function()
-    conform.format({
-        lsp_fallback = true,
-        async = false,
-        timeout_ms = 500,
-    })
+	conform.format({
+		lsp_fallback = true,
+		async = false,
+		timeout_ms = 500,
+	})
 end, { desc = "Format file or range (in visual mode)", silent = true })

@@ -132,7 +132,7 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/cmp-path"
   },
   ["cmp-tabnine"] = {
-    config = { "\27LJ\2\np\0\0\5\0\4\0\b6\0\0\0'\2\1\0B\0\2\2\18\3\0\0009\1\2\0005\4\3\0B\1\3\1K\0\1\0\1\0\3\tsort\2\20max_num_results\3\20\14max_lines\3è\a\nsetup\23cmp_tabnine.config\frequire\0" },
+    config = { "\27LJ\2\np\0\0\5\0\4\0\b6\0\0\0'\2\1\0B\0\2\2\18\3\0\0009\1\2\0005\4\3\0B\1\3\1K\0\1\0\1\0\3\20max_num_results\3\20\tsort\2\14max_lines\3è\a\nsetup\23cmp_tabnine.config\frequire\0" },
     loaded = true,
     path = "/home/jjhm/.local/share/nvim/site/pack/packer/start/cmp-tabnine",
     url = "https://github.com/tzachar/cmp-tabnine"
@@ -230,6 +230,12 @@ _G.packer_plugins = {
     path = "/home/jjhm/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["mini.nvim"] = {
+    config = { "\27LJ\2\ni\0\0\3\0\5\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\0\0'\2\4\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\18mini.surround\1\0\1\fn_lines\3ô\3\nsetup\fmini.ai\frequire\0" },
+    loaded = true,
+    path = "/home/jjhm/.local/share/nvim/site/pack/packer/start/mini.nvim",
+    url = "https://github.com/echasnovski/mini.nvim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/jjhm/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
@@ -280,11 +286,6 @@ _G.packer_plugins = {
     path = "/home/jjhm/.local/share/nvim/site/pack/packer/start/nvim-nio",
     url = "https://github.com/nvim-neotest/nvim-nio"
   },
-  ["nvim-tree.lua"] = {
-    loaded = true,
-    path = "/home/jjhm/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
-    url = "https://github.com/kyazdani42/nvim-tree.lua"
-  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/jjhm/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
@@ -318,6 +319,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jjhm/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
+  },
+  ["oil.nvim"] = {
+    loaded = true,
+    path = "/home/jjhm/.local/share/nvim/site/pack/packer/start/oil.nvim",
+    url = "https://github.com/stevearc/oil.nvim"
   },
   ["omnisharp-extended-lsp.nvim"] = {
     loaded = true,
@@ -354,7 +360,7 @@ _G.packer_plugins = {
     url = "https://github.com/b0o/schemastore.nvim"
   },
   ["snacks.nvim"] = {
-    config = { "\27LJ\2\n¸\2\0\0\4\0\18\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\n\0=\3\v\0025\3\f\0=\3\r\0025\3\14\0=\3\15\0025\3\16\0=\3\17\2B\0\2\1K\0\1\0\vscroll\1\0\1\fenabled\2\vlayout\1\0\1\fenabled\2\vrename\1\0\1\fenabled\2\14quickfile\1\0\1\fenabled\2\vpicker\1\0\1\fenabled\2\vindent\1\0\1\fenabled\2\fbigfile\1\0\a\14quickfile\0\vpicker\0\vrename\0\fbigfile\0\vindent\0\vscroll\0\vlayout\0\1\0\1\fenabled\2\nsetup\vsnacks\frequire\0" },
+    config = { "\27LJ\2\n¸\2\0\0\4\0\18\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\n\0=\3\v\0025\3\f\0=\3\r\0025\3\14\0=\3\15\0025\3\16\0=\3\17\2B\0\2\1K\0\1\0\vscroll\1\0\1\fenabled\2\vlayout\1\0\1\fenabled\2\vrename\1\0\1\fenabled\2\14quickfile\1\0\1\fenabled\2\vpicker\1\0\1\fenabled\2\vindent\1\0\1\fenabled\2\fbigfile\1\0\a\vlayout\0\vindent\0\vscroll\0\vrename\0\fbigfile\0\vpicker\0\14quickfile\0\1\0\1\fenabled\2\nsetup\vsnacks\frequire\0" },
     loaded = true,
     path = "/home/jjhm/.local/share/nvim/site/pack/packer/start/snacks.nvim",
     url = "https://github.com/folke/snacks.nvim"
@@ -457,22 +463,26 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: typescript-tools.nvim
-time([[Config for typescript-tools.nvim]], true)
-try_loadstring("\27LJ\2\nB\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\21typescript-tools\frequire\0", "config", "typescript-tools.nvim")
-time([[Config for typescript-tools.nvim]], false)
+-- Config for: cmp-tabnine
+time([[Config for cmp-tabnine]], true)
+try_loadstring("\27LJ\2\np\0\0\5\0\4\0\b6\0\0\0'\2\1\0B\0\2\2\18\3\0\0009\1\2\0005\4\3\0B\1\3\1K\0\1\0\1\0\3\20max_num_results\3\20\tsort\2\14max_lines\3è\a\nsetup\23cmp_tabnine.config\frequire\0", "config", "cmp-tabnine")
+time([[Config for cmp-tabnine]], false)
 -- Config for: tailwindcss-colorizer-cmp.nvim
 time([[Config for tailwindcss-colorizer-cmp.nvim]], true)
 try_loadstring("\27LJ\2\nc\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\23color_square_width\3\2\nsetup\30tailwindcss-colorizer-cmp\frequire\0", "config", "tailwindcss-colorizer-cmp.nvim")
 time([[Config for tailwindcss-colorizer-cmp.nvim]], false)
+-- Config for: typescript-tools.nvim
+time([[Config for typescript-tools.nvim]], true)
+try_loadstring("\27LJ\2\nB\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\21typescript-tools\frequire\0", "config", "typescript-tools.nvim")
+time([[Config for typescript-tools.nvim]], false)
+-- Config for: mini.nvim
+time([[Config for mini.nvim]], true)
+try_loadstring("\27LJ\2\ni\0\0\3\0\5\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\0\0'\2\4\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\18mini.surround\1\0\1\fn_lines\3ô\3\nsetup\fmini.ai\frequire\0", "config", "mini.nvim")
+time([[Config for mini.nvim]], false)
 -- Config for: snacks.nvim
 time([[Config for snacks.nvim]], true)
-try_loadstring("\27LJ\2\n¸\2\0\0\4\0\18\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\n\0=\3\v\0025\3\f\0=\3\r\0025\3\14\0=\3\15\0025\3\16\0=\3\17\2B\0\2\1K\0\1\0\vscroll\1\0\1\fenabled\2\vlayout\1\0\1\fenabled\2\vrename\1\0\1\fenabled\2\14quickfile\1\0\1\fenabled\2\vpicker\1\0\1\fenabled\2\vindent\1\0\1\fenabled\2\fbigfile\1\0\a\14quickfile\0\vpicker\0\vrename\0\fbigfile\0\vindent\0\vscroll\0\vlayout\0\1\0\1\fenabled\2\nsetup\vsnacks\frequire\0", "config", "snacks.nvim")
+try_loadstring("\27LJ\2\n¸\2\0\0\4\0\18\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\n\0=\3\v\0025\3\f\0=\3\r\0025\3\14\0=\3\15\0025\3\16\0=\3\17\2B\0\2\1K\0\1\0\vscroll\1\0\1\fenabled\2\vlayout\1\0\1\fenabled\2\vrename\1\0\1\fenabled\2\14quickfile\1\0\1\fenabled\2\vpicker\1\0\1\fenabled\2\vindent\1\0\1\fenabled\2\fbigfile\1\0\a\vlayout\0\vindent\0\vscroll\0\vrename\0\fbigfile\0\vpicker\0\14quickfile\0\1\0\1\fenabled\2\nsetup\vsnacks\frequire\0", "config", "snacks.nvim")
 time([[Config for snacks.nvim]], false)
--- Config for: cmp-tabnine
-time([[Config for cmp-tabnine]], true)
-try_loadstring("\27LJ\2\np\0\0\5\0\4\0\b6\0\0\0'\2\1\0B\0\2\2\18\3\0\0009\1\2\0005\4\3\0B\1\3\1K\0\1\0\1\0\3\tsort\2\20max_num_results\3\20\14max_lines\3è\a\nsetup\23cmp_tabnine.config\frequire\0", "config", "cmp-tabnine")
-time([[Config for cmp-tabnine]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-web-devicons ]]

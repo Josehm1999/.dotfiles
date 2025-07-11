@@ -7,7 +7,6 @@ local servers = {
 	"bashls",
 	"jsonls",
 	"yamlls",
-	-- "rust_analyzer",
 	"omnisharp",
 	"taplo",
 	"solidity",
@@ -16,10 +15,11 @@ local servers = {
 	"tailwindcss",
 	"emmet_ls",
 	"angularls",
-	"eslint",
 	"lemminx",
 	"gopls",
 	"astro",
+    "biome",
+    "eslint"
 }
 
 local settings = {

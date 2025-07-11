@@ -25,6 +25,7 @@ require("user.vim-dadbod-ui").setup()
 require("user.treesitter-context")
 require("user.inline-hints")
 require("user.barbecue")
+require("user.oil")
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
