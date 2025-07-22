@@ -80,6 +80,7 @@ local function lsp_keymaps(client, bufnr)
 	keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
 	keymap(bufnr, "n", "<leader>lI", "<cmd>Mason<cr>", opts)
 	keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+	keymap(bufnr, "v", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 	keymap(bufnr, "n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
 	keymap(bufnr, "n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
 	keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
@@ -107,6 +108,7 @@ M.on_attach = function(client, bufnr)
 	if client.name == "angularls" then
 		client.server_capabilities.documentRangeFormattingProvider = false
 		client.server_capabilities.foldingRangeProvider = false
+		client.server_capabilities.renameProvider = false
 	end
 
 	-- if client.name == "omnisharp" then
@@ -118,6 +120,12 @@ M.on_attach = function(client, bufnr)
 	end
 
 	lsp_keymaps(client, bufnr)
+
+	require("typescript-tools").setup({
+		on_attach = function(client, bufnr)
+			lsp_keymaps(client, bufnr) -- Call your existing keymap function
+		end,
+	})
 	local status_ok, illuminate = pcall(require, "illuminate")
 	if not status_ok then
 		return

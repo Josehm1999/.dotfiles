@@ -18,6 +18,7 @@ conform.setup({
 		javascriptreact = { "prettier" },
 		typescriptreact = { "prettier" },
 		svelte = { "prettier" },
+		htmlangular = { "prettier" },
 	},
 })
 
