@@ -6,6 +6,10 @@ return {
 				workingDirectories = { mode = "auto" },
 				format = auto_format,
 			},
+			flags = {
+				allow_incremental_sync = false,
+				debounce_text_changes = 1000,
+			},
 		})
 	end,
 }

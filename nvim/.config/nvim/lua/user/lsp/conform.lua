@@ -16,9 +16,10 @@ conform.setup({
 		html = { "prettier" },
 		css = { "prettier" },
 		javascriptreact = { "prettier" },
-		typescriptreact = { "prettier" },
+		typescriptreact = { "biome" },
 		svelte = { "prettier" },
 		htmlangular = { "prettier" },
+		lemminx = { "prettier" },
 	},
 })
 
