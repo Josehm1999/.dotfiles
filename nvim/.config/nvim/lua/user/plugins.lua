@@ -140,16 +140,6 @@ return packer.startup(function(use)
 	use({ "windwp/nvim-ts-autotag" })
 	use({ "onsails/lspkind-nvim" })
 
-	-- LSP Based folding
-	use({
-		"kevinhwang91/nvim-ufo",
-		opt = true,
-		event = { "BufReadPre" },
-		wants = { "promise-async" },
-		requires = "kevinhwang91/promise-async",
-		disable = false,
-	})
-
 	-- Telescope
 	use({ "nvim-telescope/telescope.nvim" })
 	use({ "nvim-telescope/telescope-media-files.nvim" })

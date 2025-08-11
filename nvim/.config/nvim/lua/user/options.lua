@@ -46,6 +46,8 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 vim.opt.incsearch = true
 vim.g.skip_ts_context_commentstring_module = true
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
 -- vim.opt.spelllang = 'en_us'
 -- vim.opt.spell = true
