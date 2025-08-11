@@ -18,6 +18,8 @@ conform.setup({
 		javascriptreact = { "biome" },
 		typescriptreact = { "biome" },
 		svelte = { "prettier" },
+		htmlangular = { "prettier" },
+		lemminx = { "prettier" },
 	},
 })
 

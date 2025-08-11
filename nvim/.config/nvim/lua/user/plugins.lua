@@ -82,15 +82,15 @@ return packer.startup(function(use)
 				bigfile = { enabled = true },
 				-- dashboard = { enabled = true },
 				-- explorer = { enabled = true },
-				indent = { enabled = true },
+				-- indent = { enabled = true },
 				-- input = { enabled = true },
 				picker = { enabled = true },
 				-- notifier = { enabled = true },
 				quickfile = { enabled = true },
 				rename = { enabled = true },
-				layout = { enabled = true },
+				-- layout = { enabled = true },
 				-- scope = { enabled = true },
-				scroll = { enabled = true },
+				-- scroll = { enabled = true },
 				-- statuscolumn = { enabled = true },
 				-- words = { enabled = true },
 			})
@@ -126,10 +126,7 @@ return packer.startup(function(use)
 	use({ "stevearc/conform.nvim" })
 	use({
 		"pmizio/typescript-tools.nvim",
-		requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		config = function()
-			require("typescript-tools").setup({})
-		end,
+		requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" }
 	})
 	use({ "RRethy/vim-illuminate", commit = "a2e8476af3f3e993bb0d6477438aad3096512e42" })
 	use({ "nvim-treesitter/nvim-treesitter-context" })
@@ -262,14 +259,14 @@ return packer.startup(function(use)
 			--  - va)  - [V]isually select [A]round [)]paren
 			--  - yinq - [Y]ank [I]nside [N]ext [Q]uote
 			--  - ci'  - [C]hange [I]nside [']quote
-			require("mini.ai").setup({ n_lines = 500 })
+			-- require("mini.ai").setup({ n_lines = 500 })
 
 			-- Add/delete/replace surroundings (brackets, quotes, etc.)
 			--
 			-- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
 			-- - sd'   - [S]urround [D]elete [']quotes
 			-- - sr)'  - [S]urround [R]eplace [)] [']
-			require("mini.surround").setup()
+			-- require("mini.surround").setup()
 		end,
 	})
 

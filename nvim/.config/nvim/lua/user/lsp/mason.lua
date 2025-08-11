@@ -3,14 +3,11 @@ local servers = {
 	"cssls",
 	"html",
 	"ts_ls",
-	"pyright",
 	"bashls",
 	"jsonls",
 	"yamlls",
 	"omnisharp",
 	"taplo",
-	"solidity",
-	"graphql",
 	"prismals",
 	"tailwindcss",
 	"emmet_ls",
@@ -18,8 +15,7 @@ local servers = {
 	"lemminx",
 	"gopls",
 	"astro",
-    "biome",
-    "eslint"
+    "biome"
 }
 
 local settings = {
