@@ -6,7 +6,7 @@ end
 require("user.lsp.mason")
 require("user.lsp.handlers").setup()
 require("user.lsp.conform")
-require("user.lsp.typescript-tools")
+-- require("user.lsp.typescript-tools")
 
 local lspconfig = require("lspconfig")
 local servers = {

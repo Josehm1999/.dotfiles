@@ -116,11 +116,11 @@ M.on_attach = function(client, bufnr)
 
 	lsp_keymaps(client, bufnr)
 
-	require("typescript-tools").setup({
-		on_attach = function(client, bufnr)
-			lsp_keymaps(client, bufnr) -- Call your existing keymap function
-		end,
-	})
+	-- require("typescript-tools").setup({
+	-- 	on_attach = function(client, bufnr)
+	-- 		lsp_keymaps(client, bufnr) -- Call your existing keymap function
+	-- 	end,
+	-- })
 	local status_ok, illuminate = pcall(require, "illuminate")
 	if not status_ok then
 		return

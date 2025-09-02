@@ -6,7 +6,7 @@ local servers = {
 	"bashls",
 	"jsonls",
 	"yamlls",
-	"omnisharp",
+    "csharp_ls",
 	"taplo",
 	"prismals",
 	"tailwindcss",
@@ -15,7 +15,7 @@ local servers = {
 	"lemminx",
 	"gopls",
 	"astro",
-    "biome"
+	"biome",
 }
 
 local settings = {
@@ -34,7 +34,8 @@ local settings = {
 require("mason").setup(settings)
 require("mason-lspconfig").setup({
 	ensure_installed = servers,
-	automatic_installation = true,
+	automatic_installation = false,
+	automatic_enable = false,
 })
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
@@ -63,7 +64,27 @@ for _, server in pairs(servers) do
 	if require_ok then
 		opts = vim.tbl_deep_extend("force", conf_opts, opts)
 	end
-	if server then
+
+	if server == "omnisharp" then
+        vim.g.OmniSharp_server_use_net6 = 1
+		lspconfig[server].setup({
+			capabilities = opts.capabilities,
+			cmd = {
+				"Omnisharp",
+				"--languageserver",
+				"--hostPID",
+				tostring(vim.fn.getpid()),
+			},
+			settings = {
+				RoslynExtensionsOptions = {
+					enableDecompilationSupport = false,
+					enableImportCompletion = true,
+					enableAnalyzersSupport = true,
+				},
+			},
+			root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj"),
+		})
+	else
 		lspconfig[server].setup(opts)
 	end
 end

@@ -57,12 +57,12 @@ return packer.startup(function(use)
 	--     },
 	-- }
 	use({ "akinsho/bufferline.nvim", commit = "83bf4dc7bff642e145c8b4547aa596803a8b4dc4" })
-	use({ "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" })
-	use({ "nvim-lualine/lualine.nvim", commit = "a52f078026b27694d2290e34efa61a6e4a690621" })
-	use({ "akinsho/toggleterm.nvim", commit = "2a787c426ef00cb3488c11b14f5dcf892bbd0bda" })
+	use({ "moll/vim-bbye" })
+	use({ "nvim-lualine/lualine.nvim" })
+	use({ "akinsho/toggleterm.nvim" })
 	use({ "ahmedkhalf/project.nvim", commit = "628de7e433dd503e782831fe150bb750e56e55d6" })
 	use({ "lewis6991/impatient.nvim" })
-	use({ "goolord/alpha-nvim", commit = "0bb6fc0646bcd1cdb4639737a1cee8d6e08bcc31" })
+	use({ "goolord/alpha-nvim" })
 	use({ "b0o/schemastore.nvim" })
 	use({
 		"roobert/tailwindcss-colorizer-cmp.nvim",
@@ -111,24 +111,20 @@ return packer.startup(function(use)
 	use({ "hrsh7th/cmp-nvim-lua" })
 
 	-- snippets
-	use({ "L3MON4D3/LuaSnip", commit = "8f8d493e7836f2697df878ef9c128337cbf2bb84" }) --snippet engine
-	use({ "rafamadriz/friendly-snippets", commit = "2be79d8a9b03d4175ba6b3d14b082680de1b31b1" }) -- a bunch of snippets to use
+	use({ "L3MON4D3/LuaSnip" }) --snippet engine
+	use({ "rafamadriz/friendly-snippets" }) -- a bunch of snippets to use
 
 	-- LSP
 	use({ "neovim/nvim-lspconfig" }) -- enable LSP
 	use({ "williamboman/mason.nvim" })
-	use({ "williamboman/mason-lspconfig.nvim", commit = "b9501106148f434a7ce528bca65725b60ea3e5d3" })
+	use({ "williamboman/mason-lspconfig.nvim" })
 	use({ "WhoIsSethDaniel/mason-tool-installer.nvim" })
 
 	--Un grande pipipip
 	-- use({ "jose-elias-alvarez/null-ls.nvim", commit = "c0c19f32b614b3921e17886c541c13a72748d450" }) -- for formatters and linters
 
 	use({ "stevearc/conform.nvim" })
-	use({
-		"pmizio/typescript-tools.nvim",
-		requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" }
-	})
-	use({ "RRethy/vim-illuminate", commit = "a2e8476af3f3e993bb0d6477438aad3096512e42" })
+	use({ "RRethy/vim-illuminate" })
 	use({ "nvim-treesitter/nvim-treesitter-context" })
 	use({ "simrat39/inlay-hints.nvim" })
 

@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 vim.cmd("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
-vim.cmd("autocmd FileType typescript,json let g:lsp_typescript_folding_enabled = v:false")
+-- vim.cmd("autocmd FileType typescript,json let g:lsp_typescript_folding_enabled = v:false")
 vim.cmd("autocmd BufRead,BufNewFile *.hbs set filetype=html")
 
 vim.api.nvim_create_autocmd({ "VimResized" }, {
@@ -68,7 +68,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
 		local opts = { buffer = ev.buf }
-		vim.keymap.set("n", "<leader>v", "<cmd>split | lua vim.lsp.buf.definition()<CR>", opts)
+		vim.keymap.set("n", "<leader>v", "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>", opts)
 	end,
 })
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
