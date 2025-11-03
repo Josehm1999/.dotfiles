@@ -6,7 +6,7 @@ local servers = {
 	"bashls",
 	"jsonls",
 	"yamlls",
-    "csharp_ls",
+	"csharp_ls",
 	"taplo",
 	"prismals",
 	"tailwindcss",
@@ -38,37 +38,27 @@ require("mason-lspconfig").setup({
 	automatic_enable = false,
 })
 
-local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_status_ok then
-	return
-end
-
-local opts = {}
+local handlers = require("user.lsp.handlers")
 
 for _, server in pairs(servers) do
-	opts = {
-		on_attach = require("user.lsp.handlers").on_attach,
-		capabilities = require("user.lsp.handlers").capabilities,
-	}
-
-	if server == "omnisharp" then
-		-- vim.lsp.handlers["textDocument/definition"] = require("omnisharp_extended").definition_handler
-		-- vim.lsp.handlers["textDocument/typeDefinition"] = require("omnisharp_extended").type_definition_handler
-		-- vim.lsp.handlers["textDocument/references"] = require("omnisharp_extended").references_handler
-		-- vim.lsp.handlers["textDocument/implementation"] = require("omnisharp_extended").implementation_handler
-	end
-
 	server = vim.split(server, "@")[1]
 
+	-- Base configuration with handlers
+	local config = {
+		on_attach = handlers.on_attach,
+		capabilities = handlers.capabilities,
+	}
+
+	-- Merge server-specific settings if they exist
 	local require_ok, conf_opts = pcall(require, "user.lsp.settings." .. server)
 	if require_ok then
-		opts = vim.tbl_deep_extend("force", conf_opts, opts)
+		config = vim.tbl_deep_extend("force", conf_opts, config)
 	end
 
+	-- Special handling for omnisharp
 	if server == "omnisharp" then
-        vim.g.OmniSharp_server_use_net6 = 1
-		lspconfig[server].setup({
-			capabilities = opts.capabilities,
+		vim.g.OmniSharp_server_use_net6 = 1
+		config = vim.tbl_deep_extend("force", config, {
 			cmd = {
 				"Omnisharp",
 				"--languageserver",
@@ -82,19 +72,11 @@ for _, server in pairs(servers) do
 					enableAnalyzersSupport = true,
 				},
 			},
-			root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj"),
+			root_markers = { "*.sln", "*.csproj" },
 		})
-	else
-		lspconfig[server].setup(opts)
 	end
-end
 
--- filter the list for the ones not globally installed
--- require("mason-tool-installer").setup {
---     ensure_installed = {
---         "go-debug-adapter",
---         "php-debug-adapter",
---         "js-debug-adapter",
---         "codelldb",
---     }
--- }
+	-- Apply configuration and enable server
+	vim.lsp.config(server, config)
+	vim.lsp.enable(server)
+end
