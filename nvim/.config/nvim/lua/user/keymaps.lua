@@ -125,3 +125,24 @@ keymap("n", "<leader>x", "<cmd>!chmod +x %<CR>", opts)
 
 --Source files
 keymap("n", "<leader><CR>", ":so<CR>", opts)
+
+--Flash keymaps
+keymap({ "n", "x", "o" }, "zk", function()
+	require("flash").jump()
+end, opts)
+
+keymap({ "n", "x", "o" }, "Zk", function()
+	require("flash").treesitter()
+end, opts)
+
+keymap("o", "r", function()
+	require("flash").remote()
+end, opts)
+
+keymap({ "o", "x" }, "R", function()
+	require("flash").treesitter_search()
+end, opts)
+
+keymap("c", "<C-s>", function()
+	require("flash").toggle()
+end, opts)
