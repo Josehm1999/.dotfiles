@@ -126,6 +126,10 @@ return packer.startup(function(use)
 	use({ "williamboman/mason.nvim" })
 	use({ "williamboman/mason-lspconfig.nvim" })
 	use({ "WhoIsSethDaniel/mason-tool-installer.nvim" })
+	use({
+		"nvimdev/lspsaga.nvim",
+		after = "nvim-lspconfig",
+	})
 
 	--Un grande pipipip
 	-- use({ "jose-elias-alvarez/null-ls.nvim", commit = "c0c19f32b614b3921e17886c541c13a72748d450" }) -- for formatters and linters

@@ -16,6 +16,7 @@ local servers = {
 	"gopls",
 	"astro",
 	"biome",
+    "jdtls"
 }
 
 local settings = {
@@ -56,27 +57,49 @@ for _, server in pairs(servers) do
 	end
 
 	-- Special handling for omnisharp
-	if server == "omnisharp" then
-		vim.g.OmniSharp_server_use_net6 = 1
+	-- if server == "omnisharp" then
+	-- 	vim.g.OmniSharp_server_use_net6 = 1
+	-- 	config = vim.tbl_deep_extend("force", config, {
+	-- 		cmd = {
+	-- 			"Omnisharp",
+	-- 			"--languageserver",
+	-- 			"--hostPID",
+	-- 			tostring(vim.fn.getpid()),
+	-- 		},
+	-- 		settings = {
+	-- 			RoslynExtensionsOptions = {
+	-- 				enableDecompilationSupport = false,
+	-- 				enableImportCompletion = true,
+	-- 				enableAnalyzersSupport = true,
+	-- 			},
+	-- 		},
+	-- 		root_markers = { "*.sln", "*.csproj" },
+	-- 	})
+	-- end
+	--
+	if server == "angularls" then
+		local mason_path = vim.fn.stdpath("data") .. "/mason/packages"
+
+		-- Find node_modules in current working directory
 		config = vim.tbl_deep_extend("force", config, {
 			cmd = {
-				"Omnisharp",
-				"--languageserver",
-				"--hostPID",
-				tostring(vim.fn.getpid()),
+				"ngserver",
+				"--stdio",
+				"--tsProbeLocations",
+				mason_path .. "/typescript-language-server/node_modules/typescript/lib",
+				"--ngProbeLocations",
+				mason_path .. "/angular-language-server/node_modules/@angular/language-server/bin",
 			},
-			settings = {
-				RoslynExtensionsOptions = {
-					enableDecompilationSupport = false,
-					enableImportCompletion = true,
-					enableAnalyzersSupport = true,
-				},
-			},
-			root_markers = { "*.sln", "*.csproj" },
 		})
 	end
 
+	vim.lsp.config("angularls", config)
+	vim.lsp.enable("angularls")
+
 	-- Apply configuration and enable server
-	vim.lsp.config(server, config)
-	vim.lsp.enable(server)
+	--
+	if server ~= "angularls" then
+		vim.lsp.config(server, config)
+		vim.lsp.enable(server)
+	end
 end

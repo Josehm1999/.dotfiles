@@ -7,7 +7,7 @@ local servers = {
 	lua_ls = require("user.lsp.settings.lua_ls"),
 	jsonls = require("user.lsp.settings.json_ls"),
 	eslint = require("user.lsp.settings.eslint_ls"),
-	angularls = require("user.lsp.settings.angular_ls"),
+	-- angularls = require("user.lsp.settings.angular_ls"),
 }
 
 for name, config in pairs(servers) do
