@@ -278,6 +278,12 @@ return packer.startup(function(use)
 		end,
 	})
 
+	use({
+		"abecodes/tabout.nvim",
+		wants = { "nvim-treesitter" }, -- (optional) or require if not used so far
+		after = { "nvim-cmp" },
+	})
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
