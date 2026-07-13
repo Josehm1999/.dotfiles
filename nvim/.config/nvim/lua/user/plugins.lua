@@ -77,24 +77,6 @@ return packer.startup(function(use)
 	-- A collection of small QoL plugins for Neovim.
 	use({
 		"folke/snacks.nvim",
-		config = function()
-			require("snacks").setup({
-				bigfile = { enabled = true },
-				-- dashboard = { enabled = true },
-				-- explorer = { enabled = true },
-				-- indent = { enabled = true },
-				-- input = { enabled = true },
-				picker = { enabled = true },
-				-- notifier = { enabled = true },
-				quickfile = { enabled = true },
-				rename = { enabled = true },
-				-- layout = { enabled = true },
-				-- scope = { enabled = true },
-				-- scroll = { enabled = true },
-				-- statuscolumn = { enabled = true },
-				-- words = { enabled = true },
-			})
-		end,
 		priority = 1000,
 	})
 
@@ -133,6 +115,16 @@ return packer.startup(function(use)
 
 	--Un grande pipipip
 	-- use({ "jose-elias-alvarez/null-ls.nvim", commit = "c0c19f32b614b3921e17886c541c13a72748d450" }) -- for formatters and linters
+	--
+
+	--Opencode integration
+	use({
+		"nickjvandyke/opencode.nvim",
+		tag = "*", -- Latest stable release
+		requires = {
+			{ "folke/snacks.nvim", opt = true },
+		},
+	})
 
 	use({ "stevearc/conform.nvim" })
 	use({ "RRethy/vim-illuminate" })
@@ -274,7 +266,7 @@ return packer.startup(function(use)
 			-- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
 			-- - sd'   - [S]urround [D]elete [']quotes
 			-- - sr)'  - [S]urround [R]eplace [)] [']
-			-- require("mini.surround").setup()
+			require("mini.surround").setup()
 		end,
 	})
 
